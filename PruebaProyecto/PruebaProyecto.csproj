@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,17 +47,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CambiarColor.cs" />
+    <Compile Include="DiligenciarFormulario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiligenciarFormulario.Designer.cs">
+      <DependentUpon>DiligenciarFormulario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioDocente.Designer.cs">
+      <DependentUpon>FormularioDocente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Principal.cs">
+    <Compile Include="PrincipalAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Principal.Designer.cs">
-      <DependentUpon>Principal.cs</DependentUpon>
+    <Compile Include="PrincipalAdministrador.Designer.cs">
+      <DependentUpon>PrincipalAdministrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrincipalDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrincipalDocente.Designer.cs">
+      <DependentUpon>PrincipalDocente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrincipalMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrincipalMonitor.Designer.cs">
+      <DependentUpon>PrincipalMonitor.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,11 +92,23 @@
     <Compile Include="Registrar.Designer.cs">
       <DependentUpon>Registrar.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DiligenciarFormulario.resx">
+      <DependentUpon>DiligenciarFormulario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioDocente.resx">
+      <DependentUpon>FormularioDocente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Principal.resx">
-      <DependentUpon>Principal.cs</DependentUpon>
+    <EmbeddedResource Include="PrincipalAdministrador.resx">
+      <DependentUpon>PrincipalAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrincipalDocente.resx">
+      <DependentUpon>PrincipalDocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrincipalMonitor.resx">
+      <DependentUpon>PrincipalMonitor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

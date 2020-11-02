@@ -6,15 +6,8 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class Monitor
+    public class Monitor :  Trabajador
     {
-        public string nombreDeUsuario { get; set; }
-        public string codigoMonitor { get; set; }
-        public string contraseña { get; set; }
-        public string primerNombre { get; set; }
-        public string segundoNombre { get; set; }
-        public string primerApellido { get; set; }
-        public string segundoApellido { get; set; }
-        public string Identificacion { get; set; }
+        public Pedido pedidos { get; set; }
     }
 }

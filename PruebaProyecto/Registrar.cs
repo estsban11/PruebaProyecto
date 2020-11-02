@@ -16,18 +16,38 @@ namespace PruebaProyecto
     {
 
         AdministradorService service;
+        Login login = new Login();
+        CambiarColor color = new CambiarColor();
         public Registrar()
         {
-            InitializeComponent();
-            service = new AdministradorService();
+         InitializeComponent();
+         service = new AdministradorService();
+            button3.FlatAppearance.BorderSize = 0;
+            validarColor();
+           
+          
         }
 
+        void validarColor()
+        {
+            if(color.color == true)
+            {
+                MessageBox.Show("", "");
+            }
+            else
+            {
+                color.Blanco();
+            }
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             Login login = new Login();
             this.Hide();
             login.ShowDialog();
             this.Close();
+
+           
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,8 +60,7 @@ namespace PruebaProyecto
             administrador.primerApellido = textBox5.Text;
             administrador.segundoApellido = textBox7.Text;
             administrador.Identificacion = textBox3.Text;
-            administrador.codigoAdministrador = textBox4.Text;
-
+            administrador.nombreCargo = comboBox1.Text;
             MessageBox.Show(service.Guardar(administrador),"Registrar");
         }
 
@@ -52,7 +71,23 @@ namespace PruebaProyecto
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            string final;
+            if (comboBox1.Text == "Administrador")
+            {
+                textBox4.Text = "AD";
+                final = textBox4.Text + textBox3.Text;
+                textBox1.Text = final;
+            }else if(comboBox1.Text == "Docente")
+            {
+                textBox4.Text = "DC";
+                final = textBox4.Text + textBox3.Text;
+                textBox1.Text = final;
+            }else if (comboBox1.Text == "Monitor")
+            {
+                textBox4.Text = "MT";
+                final = textBox4.Text + textBox3.Text;
+                textBox1.Text = final;
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)

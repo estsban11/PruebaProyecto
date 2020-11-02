@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class Laboratorio
+   public class Pedido
     {
-        public string idLaboratorio { get; set; } 
-        public string ubicacionLaboratorio { get; set; }
         public Material materiales { get; set; }
-        public Trabajador trabajador { get; set; }
+        public DateTime fechaPedido { get; set; }
+        public DateTime duracionPedido { get; set; }
+
     }
 }

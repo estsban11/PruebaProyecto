@@ -1,5 +1,4 @@
-﻿using Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,25 +10,16 @@ using System.Windows.Forms;
 
 namespace PruebaProyecto
 {
-    public partial class Principal : Form
+    public partial class DiligenciarFormulario : Form
     {
-        public Principal()
+        public DiligenciarFormulario()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-            Login login = new Login();
-            this.Hide();
-            login.ShowDialog();
             this.Close();
-        }
-
-        public void Registrar()
-        {
-            
-            
         }
     }
 }
