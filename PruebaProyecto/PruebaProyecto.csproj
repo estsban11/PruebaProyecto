@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesome.Sharp, Version=5.15.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.15.1\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Messaging" />
@@ -47,12 +50,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CambiarColor.cs" />
-    <Compile Include="DiligenciarFormulario.cs">
+    <Compile Include="ActualizarProductos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DiligenciarFormulario.Designer.cs">
-      <DependentUpon>DiligenciarFormulario.cs</DependentUpon>
+    <Compile Include="ActualizarProductos.Designer.cs">
+      <DependentUpon>ActualizarProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CambiarColor.cs" />
+    <Compile Include="ConsultarProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarProductos.Designer.cs">
+      <DependentUpon>ConsultarProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarDocentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarDocentes.Designer.cs">
+      <DependentUpon>RegistrarDocentes.cs</DependentUpon>
     </Compile>
     <Compile Include="FormularioDocente.cs">
       <SubType>Form</SubType>
@@ -60,6 +75,7 @@
     <Compile Include="FormularioDocente.Designer.cs">
       <DependentUpon>FormularioDocente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interface1.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,8 +108,20 @@
     <Compile Include="Registrar.Designer.cs">
       <DependentUpon>Registrar.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DiligenciarFormulario.resx">
-      <DependentUpon>DiligenciarFormulario.cs</DependentUpon>
+    <Compile Include="RegistrarProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarProductos.Designer.cs">
+      <DependentUpon>RegistrarProductos.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ActualizarProductos.resx">
+      <DependentUpon>ActualizarProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarProductos.resx">
+      <DependentUpon>ConsultarProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarDocentes.resx">
+      <DependentUpon>RegistrarDocentes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormularioDocente.resx">
       <DependentUpon>FormularioDocente.cs</DependentUpon>
@@ -122,6 +150,10 @@
     <EmbeddedResource Include="Registrar.resx">
       <DependentUpon>Registrar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarProductos.resx">
+      <DependentUpon>RegistrarProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

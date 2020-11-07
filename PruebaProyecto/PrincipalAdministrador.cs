@@ -44,6 +44,19 @@ namespace PruebaProyecto
             
         }
 
+        private void AbrirForm(object form)
+        {
+            if (this.panel3.Controls.Count > 0)
+            {
+                this.panel3.Controls.RemoveAt(0);
+            }
+            Form formulario = form as Form;
+            formulario.TopLevel = false;
+            formulario.Dock = DockStyle.Fill;
+            this.panel3.Controls.Add(formulario);
+            this.panel3.Tag = formulario;
+            formulario.Show();
+        }
         private void button3_Click(object sender, EventArgs e)
         {
           
@@ -54,6 +67,22 @@ namespace PruebaProyecto
             }
           
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            AbrirForm(new RegistrarProductos());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new ConsultarProductos());
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Size = Screen.PrimaryScreen.WorkingArea.Size;
+            this.Location = Screen.PrimaryScreen.WorkingArea.Location;
         }
     }
 }

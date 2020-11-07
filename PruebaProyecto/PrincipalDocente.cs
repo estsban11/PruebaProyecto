@@ -10,14 +10,21 @@ using System.Windows.Forms;
 
 namespace PruebaProyecto
 {
-    public partial class PrincipalDocente : Form
+    public partial class PrincipalDocente : Form, Interface1
     {
+
+        public string texto;
+     
+        
         public PrincipalDocente()
         {
             InitializeComponent();
             Borde();
+            
+            
         }
 
+       
         private void Borde()
         {
             button1.FlatAppearance.BorderSize = 0;
@@ -26,12 +33,15 @@ namespace PruebaProyecto
 
         private void button1_Click(object sender, EventArgs e)
         {
+            CopiarTexto(new FormularioDocente());
             AbrirForm(new FormularioDocente());
+           
+          
         }
 
         private void AbrirForm(object form)
         {
-            if(this.panel3.Controls.Count > 0)
+            if (this.panel3.Controls.Count > 0)
             {
                 this.panel3.Controls.RemoveAt(0);
             }
@@ -66,7 +76,7 @@ namespace PruebaProyecto
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            DiligenciarFormulario diligenciar = new DiligenciarFormulario();
+            RegistrarDocentes diligenciar = new RegistrarDocentes();
             diligenciar.Hide();
             diligenciar.Close();
         }
@@ -79,6 +89,20 @@ namespace PruebaProyecto
         private void button3_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        public void CopiarTexto(FormularioDocente docente)
+        {
+        }
+
+
+        private void PrincipalDocente_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

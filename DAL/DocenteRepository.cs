@@ -17,8 +17,7 @@ namespace DAL
         {
             FileStream file = new FileStream(ruta, FileMode.Append);
             StreamWriter escritor = new StreamWriter(file);
-            escritor.WriteLine($"{docente.nombreDeUsuario};{docente.contraseña};{docente.Identificacion};{docente.primerNombre};"+
-              $"{docente.segundoNombre};{docente.primerApellido};{docente.segundoApellido};{docente.nombreCargo}");
+            escritor.WriteLine($"{docente.nombreDeUsuario};{docente.contraseña};{docente.Identificacion};{docente.primerNombre};{docente.segundoNombre};{docente.primerApellido};{docente.segundoApellido};{docente.nombreCargo}");
             escritor.Close();
             file.Close();
         }

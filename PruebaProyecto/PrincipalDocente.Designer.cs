@@ -100,9 +100,9 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel3.Location = new System.Drawing.Point(216, 52);
+            this.panel3.Location = new System.Drawing.Point(216, 63);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1112, 518);
+            this.panel3.Size = new System.Drawing.Size(1112, 507);
             this.panel3.TabIndex = 26;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -118,6 +118,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PrincipalDocente";
             this.Text = "PrincipalDocente";
+            this.Load += new System.EventHandler(this.PrincipalDocente_Load);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

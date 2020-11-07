@@ -8,13 +8,15 @@ namespace Entity
 {
     public class Docente
     {
-        public string nombreDeUsuario { get; set; }
-        public string contraseña { get; set; }
-        public string Identificacion { get; set; }
+       
         public string primerNombre { get; set; }
         public string segundoNombre { get; set; }
         public string primerApellido { get; set; }
         public string segundoApellido { get; set; }
+        public string nombreDeUsuario { get; set; }
+        public string contraseña { get; set; }
+        public string Identificacion { get; set; }
         public string nombreCargo { get; set; }
+        public Asignatura asignatura { get; set; }
     }
 }

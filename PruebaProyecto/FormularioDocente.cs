@@ -8,15 +8,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
 
 namespace PruebaProyecto
 {
     public partial class FormularioDocente : Form
     {
+        DocenteService service;
+        
         public FormularioDocente()
         {
+            service = new DocenteService();
             InitializeComponent();
             LlenarTabla();
+            Buscar();
+          
+            
         }
 
         public void LlenarTabla()
@@ -34,9 +41,23 @@ namespace PruebaProyecto
 
         public void Buscar()
         {
-            Docente docente = new Docente();
+            var busqueda = service.Busqueda(textBox1.Text);
+           if(busqueda.Encontrado == true)
+            {
+                Docente docente = busqueda.Docente;
+                txtNombre.Text = docente.primerNombre;
+            }
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+           Docente docente =  service.Busqueda(textBox1.Text).Docente;
+            txtNombre.Text = docente.primerNombre;
+            txtApellido.Text = docente.primerApellido;
+           // txtAsignatura.Text = docente.asignatura.nombreMateria;
+            
+            
+        }
     }
 }

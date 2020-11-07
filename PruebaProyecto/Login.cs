@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entity;
+using BLL;
 
 
 
@@ -18,40 +19,66 @@ namespace PruebaProyecto
 {
     public partial class Login : Form
     {
-        
-        
         public CambiarColor color = new CambiarColor();
         DialogResult resultNegro;
         DialogResult resultBlanco;
+        DocenteService service = new DocenteService();
+        
+       
         public Login()
         {
             InitializeComponent();
             button3.FlatAppearance.BorderSize = 0;
-            
-
         }
+        
+        
 
+     
         private void button1_Click(object sender, EventArgs e)
         {
+            ValidarCargo();
+          //  Buscar(textBox1.Text);
             
-            this.Hide();
-           if(textBox1.Text[0] == 'A')
+        }
+
+        public void Buscar(string nombreUsuario)
+        {
+           var busqueda =  service.Busqueda(nombreUsuario);
+            if (busqueda.Encontrado==true)
+            {
+                ValidarCargo();
+                
+            }
+            else
+            {
+                MessageBox.Show(busqueda.Mensaje);
+            }
+
+
+        }
+        private void ValidarCargo()
+        {
+            
+            if (textBox1.Text[0] == 'A')
             {
                 PrincipalAdministrador principal = new PrincipalAdministrador();
-                principal.ShowDialog();
+               
+                principal.Show();
                 
-            }else if(textBox1.Text[0]== 'D')
+            }
+            else if (textBox1.Text[0] == 'D')
             {
                 PrincipalDocente docente = new PrincipalDocente();
-                docente.ShowDialog();
+                docente.Show();
+              
 
             }
-            else if(textBox1.Text[0]=='M')
+            else if (textBox1.Text[0] == 'M')
             {
                 PrincipalMonitor monitor = new PrincipalMonitor();
-                monitor.ShowDialog();
+                monitor.Show();
             }
-            this.Close();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -64,15 +91,14 @@ namespace PruebaProyecto
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            this.Close();
+           
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
 
             resultBlanco = 0;
-            resultBlanco  =  MessageBox.Show("Color", "Se cambiara el color del programa", MessageBoxButtons.YesNo);
+            resultBlanco  =  MessageBox.Show( "Se cambiara el color del programa", "Color", MessageBoxButtons.YesNo);
             button5.Visible = true;
             button4.Visible = false;
             color.ValidarColorBlanco(resultBlanco);
@@ -106,9 +132,17 @@ namespace PruebaProyecto
             }
         }
 
+        public void PasarTexto()
+        {
+           
+           
 
+        }
+        private void button6_Click(object sender, EventArgs e)
+        {
+          
+        }
 
-
-
+      
     }
 }

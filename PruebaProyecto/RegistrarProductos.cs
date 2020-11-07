@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace PruebaProyecto
 {
-    public partial class DiligenciarFormulario : Form
+    public partial class RegistrarProductos : Form
     {
-        public DiligenciarFormulario()
+        public RegistrarProductos()
         {
             InitializeComponent();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

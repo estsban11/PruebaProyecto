@@ -10,18 +10,21 @@ using System.Windows.Forms;
 using Entity;
 using BLL;
 
+
 namespace PruebaProyecto
 {
     public partial class Registrar : Form
     {
 
-        AdministradorService service;
+        AdministradorService serviceAdmind;
+        
+        DocenteService service;
         Login login = new Login();
         CambiarColor color = new CambiarColor();
         public Registrar()
         {
          InitializeComponent();
-         service = new AdministradorService();
+        
             button3.FlatAppearance.BorderSize = 0;
             validarColor();
            
@@ -44,24 +47,31 @@ namespace PruebaProyecto
             Login login = new Login();
             this.Hide();
             login.ShowDialog();
-            this.Close();
-
-           
-            
+            this.Close(); 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Administrador administrador = new Administrador();
-            administrador.nombreDeUsuario = textBox1.Text;
-            administrador.contraseña = textBox6.Text;
-            administrador.primerNombre = textBox2.Text;
-            administrador.segundoNombre = textBox8.Text;
-            administrador.primerApellido = textBox5.Text;
-            administrador.segundoApellido = textBox7.Text;
-            administrador.Identificacion = textBox3.Text;
-            administrador.nombreCargo = comboBox1.Text;
-            MessageBox.Show(service.Guardar(administrador),"Registrar");
+            ValidarCargo(textBox4.Text);
+        }
+
+        public void ValidarCargo(string codigo)
+        {
+            service = new DocenteService();
+            if(codigo == "DC")
+            {
+                Docente docente = new Docente();
+                docente.nombreDeUsuario = textBox1.Text;
+                docente.contraseña = textBox6.Text;
+                docente.primerNombre = textBox2.Text;
+                docente.segundoNombre = textBox8.Text;
+                docente.primerApellido = textBox5.Text;
+                docente.segundoApellido = textBox7.Text;
+                docente.Identificacion = textBox3.Text;
+                docente.nombreCargo = comboBox1.Text;
+                MessageBox.Show(service.Guardar(docente), "Registrar");
+            }
+
         }
 
         private void label6_Click(object sender, EventArgs e)
