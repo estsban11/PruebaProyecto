@@ -10,5 +10,6 @@ namespace Entity
     {
         public string IdFormulario { get; set; }
         public DateTime Fecha { get; set; }
+        public Docente Docente { get; set; }
     }
 }
