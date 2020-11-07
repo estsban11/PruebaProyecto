@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class Monitor :  Trabajador
+   public  class Cargo
     {
-        public Pedido pedidos { get; set; }
+        public string IdCargo { get; set; }
+        public string NombreCargo { get; set; }
     }
 }

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class Administrador : Trabajador
+    public class Formulario
     {
-        
+        public string IdFormulario { get; set; }
+        public DateTime Fecha { get; set; }
     }
 }
