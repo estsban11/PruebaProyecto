@@ -8,10 +8,10 @@ namespace Entity
 {
     public class Asignatura
     {
+        public string IdAsignatura { get; set; }
+        public string NombreAsignatura { get; set; }
+        public int NumeroGrupo { get; set; }
+        public string HorasLaboratorio { get; set; }
         public Docente docente { get; set; }
-        public string codigoMateria { get; set; }
-        public string nombreMateria { get; set; }
-        public string numeroGrupo { get; set; }
-      
     }
 }

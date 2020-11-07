@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Entity
 {
-   public class Pedido
+    public class Pedido
     {
-        public Material materiales { get; set; }
-        public DateTime fechaPedido { get; set; }
-        public DateTime duracionPedido { get; set; }
-
+        public string IdPedido { get; set; }
+        public DateTime Fecha { get; set; }
+        public List<Material> Materiales { get; set; }
+        public Pago  Pago { get; set; }
     }
 }
