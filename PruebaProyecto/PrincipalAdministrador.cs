@@ -84,5 +84,10 @@ namespace PruebaProyecto
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             this.Location = Screen.PrimaryScreen.WorkingArea.Location;
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new Registrar());
+        }
     }
 }

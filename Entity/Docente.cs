@@ -17,6 +17,7 @@ namespace Entity
         public string contraseña { get; set; }
         public string Identificacion { get; set; }
         public string nombreCargo { get; set; }
+        public string Email { get; set; }
         public Asignatura asignatura { get; set; }
     }
 }

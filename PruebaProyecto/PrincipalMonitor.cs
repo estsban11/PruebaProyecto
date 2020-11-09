@@ -15,11 +15,29 @@ namespace PruebaProyecto
         public PrincipalMonitor()
         {
             InitializeComponent();
+            Bordes();
+            
         }
 
+        public void Bordes()
+        {
+            button1.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.BorderSize = 0;
+            button3.FlatAppearance.BorderSize = 0;
+            button4.FlatAppearance.BorderSize = 0;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Esta seguro de cerrar la aplicacion?", "", MessageBoxButtons.YesNo);
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }

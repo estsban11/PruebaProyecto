@@ -45,7 +45,7 @@
             this.panel2.Controls.Add(this.button3);
             this.panel2.Location = new System.Drawing.Point(-2, -1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1341, 36);
+            this.panel2.Size = new System.Drawing.Size(1382, 36);
             this.panel2.TabIndex = 24;
             // 
             // button3
@@ -53,7 +53,7 @@
             this.button3.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(1299, 3);
+            this.button3.Location = new System.Drawing.Point(1340, 0);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(39, 34);
             this.button3.TabIndex = 7;
@@ -67,7 +67,7 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Location = new System.Drawing.Point(-2, 35);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(195, 556);
+            this.panel1.Size = new System.Drawing.Size(195, 644);
             this.panel1.TabIndex = 25;
             // 
             // button2
@@ -75,11 +75,11 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(3, 178);
+            this.button2.Location = new System.Drawing.Point(3, 238);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(192, 68);
+            this.button2.Size = new System.Drawing.Size(192, 86);
             this.button2.TabIndex = 1;
-            this.button2.Text = " Ayuda            ";
+            this.button2.Text = " Consulrar formulario";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = true;
             // 
@@ -90,7 +90,7 @@
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(0, 87);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(192, 68);
+            this.button1.Size = new System.Drawing.Size(192, 95);
             this.button1.TabIndex = 0;
             this.button1.Text = "Diligenciar formulario";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -102,7 +102,7 @@
             this.panel3.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel3.Location = new System.Drawing.Point(216, 63);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1112, 507);
+            this.panel3.Size = new System.Drawing.Size(1122, 577);
             this.panel3.TabIndex = 26;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -111,7 +111,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.ClientSize = new System.Drawing.Size(1340, 603);
+            this.ClientSize = new System.Drawing.Size(1379, 677);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);

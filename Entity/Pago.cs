@@ -8,19 +8,36 @@ namespace Entity
 {
     public class Pago
     {
-        List<Pedido> listaDePedidos { get; set; }
-        public double subtotal{ get; set; }
+        public Pedido Pedido { get; set; }
+        public double SubTotal { get; set; }
         public double IVA { get; set; }
-        public double total { get; set; }
-
-        public void CalcularPago()
+        public double Total { get; set; }
+        public Pago()
         {
-            if(listaDePedidos != null)
+            SubTotal = 0;
+            IVA = 0;
+            Total = 0;
+        }
+        private void CalcularSubtotal()
+        {
+            foreach (Material material in Pedido.Materiales)
             {
-                subtotal = listaDePedidos.Sum(m => m.materiales.precioProducto);
-                IVA = subtotal * 0.16;
-                total = subtotal + IVA;
+                SubTotal = SubTotal + (material.precioProducto * material.cantidadProducto);
             }
+
+        }
+        private void CalcularIVA()
+        {
+            foreach (Material material in Pedido.Materiales)
+            {
+                IVA = IVA + (material.precioProducto * material.cantidadProducto * 0.16);
+            }
+        }
+        public void CalcularPagoTotal()
+        {
+            CalcularSubtotal();
+            CalcularIVA();
+            Total = SubTotal + IVA;
         }
 
     }

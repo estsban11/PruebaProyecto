@@ -63,11 +63,11 @@
     <Compile Include="ConsultarProductos.Designer.cs">
       <DependentUpon>ConsultarProductos.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegistrarDocentes.cs">
+    <Compile Include="RegistrarAsignatura.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistrarDocentes.Designer.cs">
-      <DependentUpon>RegistrarDocentes.cs</DependentUpon>
+    <Compile Include="RegistrarAsignatura.Designer.cs">
+      <DependentUpon>RegistrarAsignatura.cs</DependentUpon>
     </Compile>
     <Compile Include="FormularioDocente.cs">
       <SubType>Form</SubType>
@@ -120,8 +120,8 @@
     <EmbeddedResource Include="ConsultarProductos.resx">
       <DependentUpon>ConsultarProductos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegistrarDocentes.resx">
-      <DependentUpon>RegistrarDocentes.cs</DependentUpon>
+    <EmbeddedResource Include="RegistrarAsignatura.resx">
+      <DependentUpon>RegistrarAsignatura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormularioDocente.resx">
       <DependentUpon>FormularioDocente.cs</DependentUpon>

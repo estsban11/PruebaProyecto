@@ -12,7 +12,7 @@ namespace DAL
     public class AdministradorRepository
     {
         private string Ruta = @"Empleados.Txt";
-        private List<Administrador> empleados;
+        private List<Empleado> empleados;
     
 
         public AdministradorRepository()
@@ -20,12 +20,11 @@ namespace DAL
             
         }
 
-        public void Guardar(Administrador administrador)
+        public void Guardar(Empleado administrador)
         {
             FileStream file = new FileStream(Ruta, FileMode.Append);
             StreamWriter escritor = new StreamWriter(file);
-            escritor.WriteLine($"{administrador.nombreDeUsuario};{administrador.contraseña};{administrador.primerNombre};{administrador.segundoNombre};" +
-                $"{administrador.segundoApellido};{administrador.Identificacion};{administrador.nombreCargo}");
+            escritor.WriteLine($"");
             escritor.Close();
             file.Close();
 

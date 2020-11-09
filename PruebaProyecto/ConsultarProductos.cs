@@ -15,12 +15,15 @@ namespace PruebaProyecto
         public ConsultarProductos()
         {
             InitializeComponent();
+            
             LlenarTabla();
         }
 
         public void LlenarTabla()
         {
             dataGridView1.Rows.Insert(0, "10001", "Alcohol", "litro", 2);
+           
+
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -54,7 +54,7 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Location = new System.Drawing.Point(0, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(220, 600);
+            this.panel1.Size = new System.Drawing.Size(220, 692);
             this.panel1.TabIndex = 1;
             // 
             // button7
@@ -62,7 +62,7 @@
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
             this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(3, 487);
+            this.button7.Location = new System.Drawing.Point(3, 575);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(202, 78);
             this.button7.TabIndex = 5;
@@ -75,20 +75,21 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(6, 403);
+            this.button6.Location = new System.Drawing.Point(6, 491);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(202, 78);
+            this.button6.Size = new System.Drawing.Size(199, 78);
             this.button6.TabIndex = 4;
             this.button6.Text = "Registrar docentes";
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(3, 319);
+            this.button5.Location = new System.Drawing.Point(3, 407);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(202, 78);
             this.button5.TabIndex = 3;
@@ -101,7 +102,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(3, 235);
+            this.button4.Location = new System.Drawing.Point(6, 323);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(202, 78);
             this.button4.TabIndex = 2;
@@ -114,7 +115,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(3, 158);
+            this.button2.Location = new System.Drawing.Point(3, 246);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(205, 71);
             this.button2.TabIndex = 1;
@@ -128,7 +129,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(3, 73);
+            this.button1.Location = new System.Drawing.Point(6, 161);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(205, 79);
             this.button1.TabIndex = 0;
@@ -143,7 +144,7 @@
             this.panel2.Controls.Add(this.button3);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1341, 37);
+            this.panel2.Size = new System.Drawing.Size(1502, 37);
             this.panel2.TabIndex = 23;
             // 
             // button3
@@ -151,7 +152,7 @@
             this.button3.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(1302, 0);
+            this.button3.Location = new System.Drawing.Point(1460, 0);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(39, 34);
             this.button3.TabIndex = 7;
@@ -161,9 +162,9 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel3.Location = new System.Drawing.Point(229, 58);
+            this.panel3.Location = new System.Drawing.Point(244, 58);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1062, 511);
+            this.panel3.Size = new System.Drawing.Size(1123, 611);
             this.panel3.TabIndex = 24;
             // 
             // PrincipalAdministrador
@@ -173,7 +174,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(1340, 603);
+            this.ClientSize = new System.Drawing.Size(1501, 694);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

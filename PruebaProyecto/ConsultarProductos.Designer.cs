@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.Buscar = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Buscar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,22 +53,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(929, 337);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(130, 58);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(261, 22);
-            this.textBox1.TabIndex = 1;
-            // 
-            // Buscar
-            // 
-            this.Buscar.AutoSize = true;
-            this.Buscar.Location = new System.Drawing.Point(57, 58);
-            this.Buscar.Name = "Buscar";
-            this.Buscar.Size = new System.Drawing.Size(52, 17);
-            this.Buscar.TabIndex = 2;
-            this.Buscar.Text = "Buscar";
             // 
             // Column1
             // 
@@ -97,6 +81,22 @@
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
             this.Column4.Width = 125;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(130, 58);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(261, 22);
+            this.textBox1.TabIndex = 1;
+            // 
+            // Buscar
+            // 
+            this.Buscar.AutoSize = true;
+            this.Buscar.Location = new System.Drawing.Point(57, 58);
+            this.Buscar.Name = "Buscar";
+            this.Buscar.Size = new System.Drawing.Size(52, 17);
+            this.Buscar.TabIndex = 2;
+            this.Buscar.Text = "Buscar";
             // 
             // ConsultarProductos
             // 

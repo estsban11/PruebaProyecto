@@ -29,6 +29,7 @@ namespace PruebaProyecto
         {
             button1.FlatAppearance.BorderSize = 0;
             button2.FlatAppearance.BorderSize = 0;
+            button3.FlatAppearance.BorderSize = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -76,7 +77,7 @@ namespace PruebaProyecto
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            RegistrarDocentes diligenciar = new RegistrarDocentes();
+            RegistrarAsignatura diligenciar = new RegistrarAsignatura();
             diligenciar.Hide();
             diligenciar.Close();
         }
@@ -88,7 +89,11 @@ namespace PruebaProyecto
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult resultado = MessageBox.Show("¿Esta seguro de cerrar la aplicacion?", "", MessageBoxButtons.YesNo);
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

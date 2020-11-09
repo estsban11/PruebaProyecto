@@ -8,9 +8,10 @@ namespace Entity
 {
     public class Laboratorio
     {
-        public string idLaboratorio { get; set; } 
-        public string ubicacionLaboratorio { get; set; }
-        public Material materiales { get; set; }
-        public Trabajador trabajador { get; set; }
+        public string IdLaboratorio { get; set; }
+        public string Ubicacion { get; set; }
+        public List<Empleado> Empleados { get; set; }
+        public List<Material> Materiales { get; set; }
+        public List<Cargo> Cargos { get; set; }
     }
 }

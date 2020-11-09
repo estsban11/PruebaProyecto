@@ -91,7 +91,11 @@ namespace PruebaProyecto
 
         private void button3_Click(object sender, EventArgs e)
         {
-           
+            DialogResult resultado = MessageBox.Show("¿Esta seguro de cerrar la aplicacion?", "", MessageBoxButtons.YesNo);
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)

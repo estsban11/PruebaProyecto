@@ -17,7 +17,7 @@ namespace BLL
             repository = new AdministradorRepository();
         }
 
-        public string Guardar(Administrador administrador)
+        public string Guardar(Empleado administrador)
         {
             try
             {

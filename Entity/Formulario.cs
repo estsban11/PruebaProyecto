@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-   public class Pedido
+   public class Formulario
     {
-        public string IdPedido { get; set; }
+        public string IdFormulario { get; set; }
         public DateTime Fecha { get; set; }
-        public List<Material> Materiales { get; set; }
-        public Pago Pago { get; set; }
-
+        public Docente Docente { get; set; }
     }
 }

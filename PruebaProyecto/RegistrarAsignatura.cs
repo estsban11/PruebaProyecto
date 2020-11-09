@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PruebaProyecto
 {
-    public partial class RegistrarDocentes : Form
+    public partial class RegistrarAsignatura : Form
     {
-        public RegistrarDocentes()
+        public RegistrarAsignatura()
         {
             InitializeComponent();
         }
