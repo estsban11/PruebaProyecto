@@ -10,14 +10,21 @@ using System.Windows.Forms;
 
 namespace PruebaProyecto
 {
-    public partial class RegistrarProductos : Form
+    public partial class RegistrarDocente : Form
     {
-        public RegistrarProductos()
+        public RegistrarDocente()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btRegistrarAsignatura_Click(object sender, EventArgs e)
+        {
+            RegistrarAsignatura registrarAsignatura = new RegistrarAsignatura();
+            registrarAsignatura.Opacity = 0.70;
+            registrarAsignatura.Show();
+        }
+
+        private void btRegistrar_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Se registro correctamente", "Registro", MessageBoxButtons.OK);
         }

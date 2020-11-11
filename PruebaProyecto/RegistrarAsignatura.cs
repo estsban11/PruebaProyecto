@@ -12,6 +12,9 @@ namespace PruebaProyecto
 {
     public partial class RegistrarAsignatura : Form
     {
+
+        public int xClick = 0;
+        public int yClick = 0;
         public RegistrarAsignatura()
         {
             InitializeComponent();
@@ -20,6 +23,19 @@ namespace PruebaProyecto
         private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void RegistrarAsignatura_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(e.Button!= MouseButtons.Left)
+            {
+                xClick = e.X;
+                yClick = e.Y;
+            }
+            else
+            {
+                this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick);
+            }
         }
     }
 }

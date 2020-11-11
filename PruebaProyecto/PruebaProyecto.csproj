@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -63,6 +78,12 @@
     <Compile Include="ConsultarProductos.Designer.cs">
       <DependentUpon>ConsultarProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormularioInsumos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioInsumos.Designer.cs">
+      <DependentUpon>FormularioInsumos.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarAsignatura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,11 +123,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registrar.cs">
+    <Compile Include="RegistrarDocente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registrar.Designer.cs">
-      <DependentUpon>Registrar.cs</DependentUpon>
+    <Compile Include="RegistrarDocente.Designer.cs">
+      <DependentUpon>RegistrarDocente.cs</DependentUpon>
     </Compile>
     <Compile Include="RegistrarProductos.cs">
       <SubType>Form</SubType>
@@ -114,11 +135,20 @@
     <Compile Include="RegistrarProductos.Designer.cs">
       <DependentUpon>RegistrarProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="SolicitudesDocentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SolicitudesDocentes.Designer.cs">
+      <DependentUpon>SolicitudesDocentes.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ActualizarProductos.resx">
       <DependentUpon>ActualizarProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultarProductos.resx">
       <DependentUpon>ConsultarProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioInsumos.resx">
+      <DependentUpon>FormularioInsumos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarAsignatura.resx">
       <DependentUpon>RegistrarAsignatura.cs</DependentUpon>
@@ -147,11 +177,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Registrar.resx">
-      <DependentUpon>Registrar.cs</DependentUpon>
+    <EmbeddedResource Include="RegistrarDocente.resx">
+      <DependentUpon>RegistrarDocente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarProductos.resx">
       <DependentUpon>RegistrarProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SolicitudesDocentes.resx">
+      <DependentUpon>SolicitudesDocentes.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -176,6 +209,27 @@
       <Project>{f290d4e9-8016-45f3-af3d-f796d90e4133}</Project>
       <Name>Entity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BaseDeDatos.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BaseDeDatos_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>BaseDeDatos.mdf</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

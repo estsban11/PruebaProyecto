@@ -8,7 +8,7 @@ namespace Entity
 {
     public class Empleado 
     {
-        public int Cedula { get; set; }
+        public string Cedula { get; set; }
         public string PrimerNombre { get; set; }
         public string SegundoNombre { get; set; }
         public string PrimerApellido { get; set; }

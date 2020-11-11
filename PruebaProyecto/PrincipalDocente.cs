@@ -19,8 +19,9 @@ namespace PruebaProyecto
         public PrincipalDocente()
         {
             InitializeComponent();
+            this.Opacity = 0.91;
             Borde();
-            
+            OcultarSubmenu();
             
         }
 
@@ -40,6 +41,29 @@ namespace PruebaProyecto
           
         }
 
+        private void OcultarSubmenu()
+        {
+            panel4.Visible = false;
+        }
+
+        private void HideSubMenu()
+        {
+            if (panel4.Visible)
+                panel4.Visible = false;
+        }
+
+        private void MostrarBusmenu(Panel panel)
+        {
+            if (panel.Visible == false)
+            {
+                HideSubMenu();
+                panel.Visible = true;
+            }
+            else
+            {
+                panel.Visible = false;
+            }
+        }
         private void AbrirForm(object form)
         {
             if (this.panel3.Controls.Count > 0)
@@ -108,6 +132,19 @@ namespace PruebaProyecto
         private void PrincipalDocente_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            MostrarBusmenu(panel4);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            this.Hide();
+            login.ShowDialog();
+            this.Close();
         }
     }
 }

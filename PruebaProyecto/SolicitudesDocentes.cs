@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace PruebaProyecto
 {
-    public partial class RegistrarProductos : Form
+    public partial class SolicitudesDocentes : Form
     {
-        public RegistrarProductos()
+        public SolicitudesDocentes()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Se registro correctamente", "Registro", MessageBoxButtons.OK);
         }
     }
 }

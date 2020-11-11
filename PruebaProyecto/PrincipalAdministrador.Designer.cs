@@ -1,4 +1,6 @@
-﻿namespace PruebaProyecto
+﻿using FontAwesome.Sharp;
+
+namespace PruebaProyecto
 {
     partial class PrincipalAdministrador
     {
@@ -39,8 +41,14 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -66,7 +74,7 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(202, 78);
             this.button7.TabIndex = 5;
-            this.button7.Text = "Registrar asignatura";
+            this.button7.Text = "Registrar empleado";
             this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button7.UseVisualStyleBackColor = true;
             // 
@@ -162,10 +170,69 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel3.Location = new System.Drawing.Point(244, 58);
+            this.panel3.Location = new System.Drawing.Point(244, 86);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1123, 611);
+            this.panel3.Size = new System.Drawing.Size(1122, 583);
             this.panel3.TabIndex = 24;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.panel4.BackColor = System.Drawing.Color.Gray;
+            this.panel4.Controls.Add(this.button11);
+            this.panel4.Controls.Add(this.button10);
+            this.panel4.Controls.Add(this.button9);
+            this.panel4.Location = new System.Drawing.Point(1372, 82);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(130, 114);
+            this.panel4.TabIndex = 25;
+            // 
+            // button11
+            // 
+            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Location = new System.Drawing.Point(4, 38);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(123, 30);
+            this.button11.TabIndex = 3;
+            this.button11.Text = "Login";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button10
+            // 
+            this.button10.FlatAppearance.BorderSize = 0;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Location = new System.Drawing.Point(3, 73);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(123, 30);
+            this.button10.TabIndex = 2;
+            this.button10.Text = "Cerrar sesion";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button9
+            // 
+            this.button9.FlatAppearance.BorderSize = 0;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Location = new System.Drawing.Point(3, 7);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(120, 30);
+            this.button9.TabIndex = 1;
+            this.button9.Text = "Perfil";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
+            this.button8.Location = new System.Drawing.Point(1444, 43);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(55, 33);
+            this.button8.TabIndex = 0;
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
             // PrincipalAdministrador
             // 
@@ -175,7 +242,9 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(1501, 694);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -184,6 +253,7 @@
             this.Text = "Principal";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -199,5 +269,10 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button11;
     }
 }

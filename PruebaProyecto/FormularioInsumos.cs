@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace PruebaProyecto
 {
-    public partial class RegistrarProductos : Form
+    public partial class FormularioInsumos : Form
     {
-        public RegistrarProductos()
+        public FormularioInsumos()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("Se registro correctamente", "Registro", MessageBoxButtons.OK);
+
         }
     }
 }

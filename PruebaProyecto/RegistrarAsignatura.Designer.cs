@@ -139,6 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(634, 566);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label5);
@@ -153,7 +154,9 @@
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RegistrarAsignatura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DiligenciarFormulario";
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.RegistrarAsignatura_MouseMove);
             this.ResumeLayout(false);
             this.PerformLayout();
 

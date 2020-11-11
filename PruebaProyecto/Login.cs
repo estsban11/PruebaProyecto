@@ -29,6 +29,7 @@ namespace PruebaProyecto
         {
             InitializeComponent();
             button3.FlatAppearance.BorderSize = 0;
+            
         }
         
         
@@ -37,7 +38,8 @@ namespace PruebaProyecto
         private void button1_Click(object sender, EventArgs e)
         {
             ValidarCargo();
-          //  Buscar(textBox1.Text);
+            //  Buscar(textBox1.Text);
+            this.Hide();
             
         }
 
@@ -83,9 +85,9 @@ namespace PruebaProyecto
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Registrar registrar = new Registrar();
+            
             this.Hide();
-            registrar.ShowDialog();
+            
             this.Close();
         }
 
@@ -112,7 +114,7 @@ namespace PruebaProyecto
         private void button5_Click(object sender, EventArgs e)
         {
             resultNegro = 0;
-            resultNegro = MessageBox.Show("Color", "Se cambiara el color del programa", MessageBoxButtons.YesNo);
+            resultNegro = MessageBox.Show( "Se cambiara el color del programa", "Color", MessageBoxButtons.YesNo);
             button5.Visible = false;
             button4.Visible = true;
             color.ValidarColorNegro(resultNegro);

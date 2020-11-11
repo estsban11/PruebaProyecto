@@ -16,9 +16,34 @@ namespace PruebaProyecto
         public PrincipalAdministrador()
         {
             InitializeComponent();
+            this.Opacity = 0.91;
             Bordes();
+            OcultarSubmenu();
         }
 
+        private void OcultarSubmenu()
+        {
+            panel4.Visible = false;
+        }
+
+        private void HideSubMenu()
+        {
+            if (panel4.Visible)
+                panel4.Visible = false;
+        }
+
+        private void MostrarBusmenu(Panel panel)
+        {
+            if(panel.Visible == false)
+            {
+                HideSubMenu();
+                panel.Visible = true;
+            }
+            else
+            {
+                panel.Visible = false;
+            }
+        }
         private void Bordes()
         {
             button3.FlatAppearance.BorderSize = 0;
@@ -87,7 +112,30 @@ namespace PruebaProyecto
 
         private void button6_Click(object sender, EventArgs e)
         {
-            AbrirForm(new Registrar());
+            AbrirForm(new RegistrarDocente());
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            MostrarBusmenu(panel4);
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            this.Hide();
+            login.ShowDialog();
+            this.Close();
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
