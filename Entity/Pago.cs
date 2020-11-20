@@ -22,7 +22,7 @@ namespace Entity
         {
             foreach (Material material in Pedido.Materiales)
             {
-                SubTotal = SubTotal + (material.precioProducto * material.cantidadProducto);
+                SubTotal = SubTotal + (material.PrecioProducto * material.CantidadProducto);
             }
 
         }
@@ -30,7 +30,7 @@ namespace Entity
         {
             foreach (Material material in Pedido.Materiales)
             {
-                IVA = IVA + (material.precioProducto * material.cantidadProducto * 0.16);
+                IVA = IVA + (material.PrecioProducto * material.CantidadProducto * 0.16);
             }
         }
         public void CalcularPagoTotal()

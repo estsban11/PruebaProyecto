@@ -23,26 +23,60 @@ namespace PruebaProyecto
         DialogResult resultNegro;
         DialogResult resultBlanco;
         DocenteService service = new DocenteService();
-        
+        EmpeladoServiceBD serviceBD;
        
         public Login()
         {
             InitializeComponent();
-            button3.FlatAppearance.BorderSize = 0;
+            serviceBD = new EmpeladoServiceBD(ExtraerCadena.connectionString);
             
         }
         
         
+        public bool validarCampos()
+        {
+            bool vacio = true;
 
+            if(textBox1.Text == "")
+            {
+                vacio = false;
+                errorProvider1.SetError(textBox1, "Ingesa nombre de usuario");
+            }
+            if(textBox2.Text == "")
+            {
+                vacio = false;
+                errorProvider1.SetError(textBox2, "Ingresa contraseña");
+            }
+
+            return vacio;
+        }
      
         private void button1_Click(object sender, EventArgs e)
         {
-            ValidarCargo();
-            //  Buscar(textBox1.Text);
-            this.Hide();
+            
+            if (validarCampos() == false)
+            {
+                ValidarCargo();
+                this.Hide();
+            }
             
         }
+    private void ValidarCredenciales(string nombreUsuario)
+        {
+            var busqueda = serviceBD.ValidarNombreUsuario(nombreUsuario);
+           
+            if (busqueda.Encontrado == false)
+            {
+              
+                PrincipalAdministrador admin = new PrincipalAdministrador();
+                admin.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nombre de usuario invalido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
+        }
         public void Buscar(string nombreUsuario)
         {
            var busqueda =  service.Busqueda(nombreUsuario);
@@ -93,31 +127,19 @@ namespace PruebaProyecto
 
         private void button3_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("¿Esta seguro de cerrar la aplicacion?", "", MessageBoxButtons.YesNo);
-            if (resultado == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
 
-            resultBlanco = 0;
-            resultBlanco  =  MessageBox.Show( "Se cambiara el color del programa", "Color", MessageBoxButtons.YesNo);
-            button5.Visible = true;
-            button4.Visible = false;
-            color.ValidarColorBlanco(resultBlanco);
+           
 
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            resultNegro = 0;
-            resultNegro = MessageBox.Show( "Se cambiara el color del programa", "Color", MessageBoxButtons.YesNo);
-            button5.Visible = false;
-            button4.Visible = true;
-            color.ValidarColorNegro(resultNegro);
+            
         }
 
         public void ValidarColorNegro(DialogResult dialogoB)
@@ -149,6 +171,62 @@ namespace PruebaProyecto
           
         }
 
-      
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Esta seguro de cerrar la aplicacion?", "", MessageBoxButtons.YesNo);
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            resultBlanco = 0;
+            resultBlanco = MessageBox.Show("Se cambiara el color del programa", "Color", MessageBoxButtons.YesNo);
+            iconButton3.Visible = true;
+            iconButton2.Visible = false;
+            color.ValidarColorBlanco(resultBlanco);
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            resultNegro = 0;
+            resultNegro = MessageBox.Show("Se cambiara el color del programa", "Color", MessageBoxButtons.YesNo);
+            iconButton2.Visible = true;
+            iconButton3.Visible = false;
+            color.ValidarColorNegro(resultNegro);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                errorProvider1.SetError(textBox1, "Ingrese nombre de usuario");
+            }
+            else
+            {
+                errorProvider1.SetError(textBox1, "");
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "")
+            {
+                
+                errorProvider1.SetError(textBox2, "Ingrese contraseña");
+            }
+            else
+            {
+                errorProvider1.SetError(textBox2, "");
+            }
+        }
     }
-}
+    }
+

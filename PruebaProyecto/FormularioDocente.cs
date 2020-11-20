@@ -8,21 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 using BLL;
 
 namespace PruebaProyecto
 {
     public partial class FormularioDocente : Form
     {
-        DocenteService service;
+        DocenteserviceBD serviceBD;
         
         public FormularioDocente()
         {
-            service = new DocenteService();
+           
             InitializeComponent();
+            serviceBD = new DocenteserviceBD(ExtraerCadena.connectionString);
             LlenarTabla();
-            Buscar();
-          
+            LlenarComboMonitor();
+           
             
         }
 
@@ -34,30 +36,101 @@ namespace PruebaProyecto
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBox3.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            textBox4.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            numericUpDown1.Value = Convert.ToDecimal( dataGridView1.CurrentRow.Cells[2].Value);
+            txtNombreProducto.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            txtDescripcion.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            
         }
 
         public void Buscar()
         {
-            var busqueda = service.Busqueda(textBox1.Text);
-           if(busqueda.Encontrado == true)
-            {
-                Docente docente = busqueda.Docente;
-                txtNombre.Text = docente.primerNombre;
-            }
+            
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-           Docente docente =  service.Busqueda(textBox1.Text).Docente;
-            txtNombre.Text = docente.primerNombre;
-            txtApellido.Text = docente.primerApellido;
-           // txtAsignatura.Text = docente.asignatura.nombreMateria;
+          
+            
+        }
+
+        public void LlenarComboMonitor()
+        {
+            cmbDocentes.Items.Clear();
+            SqlConnection connection = new SqlConnection(ExtraerCadena.connectionString);
+            connection.Open();
+            SqlCommand command = new SqlCommand("select * from empleado where id_cargo = 002", connection);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                cmbDocentes.Items.Add(reader[0].ToString());
+            }
+            connection.Close();
+        }
+
+        public void LlenarComboAsignatura(string docente)
+        {
+            cmbAsignatura.Items.Clear();
+            SqlConnection connection = new SqlConnection(ExtraerCadena.connectionString);
+            connection.Open();
+            SqlCommand command = new SqlCommand($"select * from asignatura where id_docente = @docente ", connection);
+            command.Parameters.Add(@"docente", SqlDbType.VarChar).Value = txtCodigo.Text;
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                cmbAsignatura.Items.Add(reader[1].ToString());
+            }
+            connection.Close();
+        }
+
+        public void ExtraerIdMonitor()
+        {
+            SqlConnection connection = new SqlConnection(ExtraerCadena.connectionString);
+            connection.Open();
+            SqlCommand command = new SqlCommand($"select * from empleado where identificacion = @identificacion   ", connection);
+            command.Parameters.Add(@"identificacion", SqlDbType.VarChar).Value = cmbDocentes.Text;
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                textBox5.Text = $"{reader[1]} {reader[3]}";
+            }
+           
+            connection.Close();
+
+        }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if(txtCodigo.Text == "")
+            {
+
+            }
+            else
+            {
+                LlenarComboAsignatura(txtCodigo.Text);
+            }
+            
+        }
+
+        private void cmbDocentes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbDocentes.Text == "")
+            {
+
+            }
+            else
+            {
+                ExtraerIdMonitor();
+            }
+        }
+
+        public void LlenarNumeroFormulario(int Contar)
+        {
             
             
+        }
+
+        private void btFinalizar_Click(object sender, EventArgs e)
+        {
+          
         }
     }
 }

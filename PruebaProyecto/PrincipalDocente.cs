@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
+using Entity;
 
 namespace PruebaProyecto
 {
@@ -20,25 +22,16 @@ namespace PruebaProyecto
         {
             InitializeComponent();
             this.Opacity = 0.91;
-            Borde();
             OcultarSubmenu();
             
         }
 
        
-        private void Borde()
-        {
-            button1.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.BorderSize = 0;
-            button3.FlatAppearance.BorderSize = 0;
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             CopiarTexto(new FormularioDocente());
             AbrirForm(new FormularioDocente());
-           
-          
         }
 
         private void OcultarSubmenu()
@@ -136,7 +129,7 @@ namespace PruebaProyecto
 
         private void button8_Click(object sender, EventArgs e)
         {
-            MostrarBusmenu(panel4);
+            
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -145,6 +138,42 @@ namespace PruebaProyecto
             this.Hide();
             login.ShowDialog();
             this.Close();
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new FormularioDocente());
+        }
+
+        private void iconButton5_Click(object sender, EventArgs e)
+        {
+            MostrarBusmenu(panel4);
+        }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Esta seguro de cerrar la aplicacion?", "", MessageBoxButtons.YesNo);
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label1.Text = DateTime.Now.ToLongTimeString();
+            label2.Text = DateTime.Now.ToLongDateString();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Docente docente = new Docente();
+            label1.Text = docente.primerNombre;
+        }
+
+        private void iconButton9_Click(object sender, EventArgs e)
+        {
+            panel3.Controls.Clear();
         }
     }
 }

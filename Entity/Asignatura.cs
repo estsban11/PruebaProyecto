@@ -13,6 +13,11 @@ namespace Entity
         public string NombreMateria { get; set; }
         public string NumeroGrupo { get; set; }
         public string HorasLaboratorio { get; set; }
+
+        public Asignatura()
+        {
+            Docente = new Docente();
+        }
       
     }
 }

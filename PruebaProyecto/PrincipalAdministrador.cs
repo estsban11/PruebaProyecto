@@ -46,13 +46,7 @@ namespace PruebaProyecto
         }
         private void Bordes()
         {
-            button3.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.BorderSize = 0;
-            button4.FlatAppearance.BorderSize = 0;
-            button5.FlatAppearance.BorderSize = 0;
-            button6.FlatAppearance.BorderSize = 0;
-            button7.FlatAppearance.BorderSize = 0;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -85,12 +79,7 @@ namespace PruebaProyecto
         private void button3_Click(object sender, EventArgs e)
         {
           
-            DialogResult resultado = MessageBox.Show("¿Esta seguro de cerrar la aplicacion?", "", MessageBoxButtons.YesNo);
-            if (resultado == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-          
+            
 
         }
 
@@ -117,7 +106,7 @@ namespace PruebaProyecto
 
         private void button8_Click_1(object sender, EventArgs e)
         {
-            MostrarBusmenu(panel4);
+            
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -133,9 +122,78 @@ namespace PruebaProyecto
             this.Close();
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new ConsultarLaboratorios());
+        }
+
         private void iconButton1_Click(object sender, EventArgs e)
         {
+            DialogResult resultado = MessageBox.Show("¿Este seguro de cerrar el programa?", "Cerrar", MessageBoxButtons.YesNo);
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
 
+        private void button7_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void PrincipalAdministrador_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new RegistrarProductos());
+        }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new ConsultarProductos());
+        }
+
+        private void iconButton4_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new ConsultarLaboratorios());
+        }
+
+        private void iconButton5_Click(object sender, EventArgs e)
+        {
+            MostrarBusmenu(panel4);
+        }
+
+        private void iconButton6_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new RegistrarDocente());
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label1.Text = DateTime.Now.ToLongTimeString();
+            label2.Text = DateTime.Now.ToLongDateString();
+        }
+
+        private void iconButton9_Click(object sender, EventArgs e)
+        {
+            panel3.Controls.Clear();
+        }
+
+        private void iconButton7_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new RegistrarEmpleado());
+        }
+
+        private void iconButton8_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Esta seguro de cerrar la aplicacion?", "", MessageBoxButtons.YesNo);
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }

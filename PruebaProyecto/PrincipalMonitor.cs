@@ -15,21 +15,19 @@ namespace PruebaProyecto
         public PrincipalMonitor()
         {
             InitializeComponent();
-            Bordes();
+            this.Opacity = 0.91;
             OcultarSubmenu();
             
         }
 
         public void Bordes()
         {
-            button1.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.BorderSize = 0;
-            button3.FlatAppearance.BorderSize = 0;
-            button4.FlatAppearance.BorderSize = 0;
+            
+           
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            AbrirForm(new FormularioInsumos());
+            
         }
         private void AbrirForm(object form)
         {
@@ -102,6 +100,41 @@ namespace PruebaProyecto
             this.Hide();
             login.ShowDialog();
             this.Close();
+        }
+
+        private void iconButton8_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Esta seguro de cerrar la aplicacion?", "", MessageBoxButtons.YesNo);
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new FormularioInsumos());
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iconButton5_Click(object sender, EventArgs e)
+        {
+            MostrarBusmenu(panel4);
+        }
+
+        private void iconButton9_Click(object sender, EventArgs e)
+        {
+            panel3.Controls.Clear();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label1.Text = DateTime.Now.ToLongTimeString();
+            label2.Text = DateTime.Now.ToLongDateString();
         }
     }
 }

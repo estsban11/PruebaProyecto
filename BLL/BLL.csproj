@@ -41,8 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsignaturaServiceBD.cs" />
+    <Compile Include="DocenteserviceBD.cs" />
+    <Compile Include="EmpeladoServiceBD.cs" />
     <Compile Include="EmpleadoService.cs" />
     <Compile Include="DocenteService.cs" />
+    <Compile Include="FormularioServiceBD.cs" />
+    <Compile Include="MaterialServiceBD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

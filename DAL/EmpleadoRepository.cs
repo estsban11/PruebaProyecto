@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Entity;
 using System.IO;
 using System.Net.Http;
+using System.Data.SqlClient;
 
 namespace DAL
 {
@@ -13,7 +14,8 @@ namespace DAL
     {
         private string Ruta = @"Empleados.Txt";
         private List<Empleado> empleados;
-    
+        
+ 
 
         public EmpleadoRepository()
         {
@@ -62,5 +64,7 @@ namespace DAL
             empleado.Contraseña = registro[7];
             return empleado
 ;        }
+
+        
     }
 }
