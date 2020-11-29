@@ -10,6 +10,5 @@ namespace Entity
     {
         public string IdCargo { get; set; }
         public string NombreCargo { get; set; }
-
     }
 }

@@ -48,6 +48,7 @@
     <Compile Include="DocenteService.cs" />
     <Compile Include="FormularioServiceBD.cs" />
     <Compile Include="MaterialServiceBD.cs" />
+    <Compile Include="PedidoMonitorServiceBD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

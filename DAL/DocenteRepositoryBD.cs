@@ -11,6 +11,7 @@ namespace DAL
     public class DocenteRepositoryBD
     {
         ConnectionManager connection;
+        List<Docente> docentes = new List<Docente>();
         public DocenteRepositoryBD(ConnectionManager Connection)
         {
             connection = Connection;
@@ -34,8 +35,70 @@ namespace DAL
             }
         }
 
+        public List<Docente> Consultar()
+        {
+            docentes.Clear();
+            SqlDataReader sqlDataReader;
+            using(var command = connection._connection.CreateCommand())
+            {
+                command.CommandText = "SELECT * FROM docente";
+                sqlDataReader = command.ExecuteReader();
+                if (sqlDataReader.HasRows)
+                {
+                    while (sqlDataReader.Read())
+                    {
+                        if (!sqlDataReader.HasRows) return null;
+                        docentes.Add(Mapear(sqlDataReader));
+                    }
+                    sqlDataReader.Close();
+                }
+            }
+            return docentes;
+        }
 
+        public Docente Mapear(SqlDataReader dataReader)
+        {
+            Docente docente = new Docente();
+            docente.Identificacion = ((object)dataReader[@"Identificacion"]).ToString();
+            docente.primerNombre = ((object)dataReader[@"PrimerNombre"]).ToString();
+            docente.segundoNombre =  ((object)dataReader[@"SegundoNombre"]).ToString();
+            docente.primerApellido = ((object)dataReader[@"PrimerApellido"]).ToString();
+            docente.segundoApellido = ((object)dataReader[@"SegundoApellido"]).ToString();
+            docente.nombreDeUsuario = ((object)dataReader[@"NombreUsuario"]).ToString();
+            docente.contraseña = ((object)dataReader[@"Contraseña"]).ToString();
+            docente.Email = ((object)dataReader[@"Email"]).ToString();
+            return docente;
+        }
 
+        public Docente BuscarDocente(string nombreUsuario)
+        {
+            List<Docente> Docentes = Consultar();
+            foreach (var item in Docentes)
+            {
+                if(Encontrado(item.nombreDeUsuario, nombreUsuario))
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
+        public Docente BuscarContraseña(string contraseña)
+        {
+            List<Docente> Docentes = Consultar();
+            foreach (var item in Docentes)
+            {
+                if (Encontrado(item.contraseña, contraseña))
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+        public bool Encontrado(string docenteReg, string docenteBus)
+        {
+           return docenteReg == docenteBus;
+        }
 
     }
 }

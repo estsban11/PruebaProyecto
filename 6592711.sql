@@ -1,0 +1,1 @@
+﻿Alter table materiales_monitor add constraint fk_pedido_monitor foreign key(id_pedido) references informacion_pedido_monitor(id_pedido);

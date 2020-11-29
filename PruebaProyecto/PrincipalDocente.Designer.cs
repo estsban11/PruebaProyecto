@@ -37,15 +37,16 @@
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.iconButton9 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -134,6 +135,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.MidnightBlue;
+            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.iconButton9);
             this.panel1.Controls.Add(this.iconButton2);
             this.panel1.Controls.Add(this.iconButton1);
@@ -141,6 +143,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(251, 711);
             this.panel1.TabIndex = 25;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(6, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 20);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "label3";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // iconButton9
             // 
@@ -220,7 +234,7 @@
             // 
             this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.panel4.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panel4.Controls.Add(this.button11);
+            this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.button10);
             this.panel4.Controls.Add(this.button9);
             this.panel4.Location = new System.Drawing.Point(1280, 139);
@@ -228,26 +242,13 @@
             this.panel4.Size = new System.Drawing.Size(157, 153);
             this.panel4.TabIndex = 28;
             // 
-            // button11
-            // 
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.ForeColor = System.Drawing.SystemColors.Control;
-            this.button11.Location = new System.Drawing.Point(0, 69);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(157, 30);
-            this.button11.TabIndex = 3;
-            this.button11.Text = "Login";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
             // button10
             // 
             this.button10.FlatAppearance.BorderSize = 0;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.SystemColors.Control;
-            this.button10.Location = new System.Drawing.Point(4, 105);
+            this.button10.Location = new System.Drawing.Point(4, 112);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(154, 30);
             this.button10.TabIndex = 2;
@@ -261,7 +262,7 @@
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.SystemColors.Control;
-            this.button9.Location = new System.Drawing.Point(4, 33);
+            this.button9.Location = new System.Drawing.Point(4, 76);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(144, 30);
             this.button9.TabIndex = 1;
@@ -272,6 +273,19 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.MidnightBlue;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(41, 153);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(179, 20);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // PrincipalDocente
             // 
@@ -290,7 +304,9 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -302,7 +318,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button9;
         private FontAwesome.Sharp.IconButton iconButton1;
@@ -313,5 +328,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.TextBox textBox1;
     }
 }

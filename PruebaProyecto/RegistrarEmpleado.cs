@@ -53,10 +53,12 @@ namespace PruebaProyecto
             if(comboBox1.Text == "Administrador")
             {
                 txtCargo.Text = "001";
+                txtNombreUsuario.Text = $"AD{txtIdentificacion.Text}";
             }
             else
             {
                 txtCargo.Text = "002";
+                txtNombreUsuario.Text = $"MT{txtIdentificacion.Text}";
             }
         }
     }

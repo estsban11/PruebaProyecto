@@ -70,6 +70,7 @@
             this.txtNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombreUsuario.Location = new System.Drawing.Point(719, 74);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
+            this.txtNombreUsuario.ReadOnly = true;
             this.txtNombreUsuario.Size = new System.Drawing.Size(216, 27);
             this.txtNombreUsuario.TabIndex = 37;
             // 

@@ -1,1 +1,1 @@
-﻿alter table informacion_pedido add constraint id_monitor_fk foreign key(id_monitor) references empleado(identificacion);
+﻿select * from Material;

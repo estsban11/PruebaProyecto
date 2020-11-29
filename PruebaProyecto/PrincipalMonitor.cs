@@ -16,7 +16,9 @@ namespace PruebaProyecto
         {
             InitializeComponent();
             this.Opacity = 0.91;
+            AbrirForm(new InicioMonitor());
             OcultarSubmenu();
+            
             
         }
 
@@ -28,6 +30,11 @@ namespace PruebaProyecto
         private void button1_Click(object sender, EventArgs e)
         {
             
+        }
+
+        public void AbrirFormConsulta()
+        {
+            AbrirForm(new SolicitudesDocentes());
         }
         private void AbrirForm(object form)
         {
@@ -129,12 +136,23 @@ namespace PruebaProyecto
         private void iconButton9_Click(object sender, EventArgs e)
         {
             panel3.Controls.Clear();
+            AbrirForm(new InicioMonitor());
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             label1.Text = DateTime.Now.ToLongTimeString();
             label2.Text = DateTime.Now.ToLongDateString();
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new SolicitudesDocentes());
+        }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new ConsultarStock());
         }
     }
 }

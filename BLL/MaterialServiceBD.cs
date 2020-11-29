@@ -19,7 +19,7 @@ namespace BLL
             repository = new MaterialRepositoryBD(connection);
         }
 
-        public string RegistrarMateriales(Material material)
+        public string RegistrarMateriales(MaterialAdministrador material)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace BLL
             {
                 
                 connection.Open();
-                List<Material> materiales = repository.Consultar();
+                List<MaterialAdministrador> materiales = repository.Consultar();
                 respuesta = new RespuestaConsultaMaterial(materiales);
                 connection.Close();
                 return respuesta;
@@ -57,10 +57,10 @@ namespace BLL
             finally { connection.Close(); }
         }
 
-        public Material Buscar(string codigo)
+        public MaterialAdministrador Buscar(string codigo)
         {
             connection.Open();
-            Material material = repository.BuscarMaterial(codigo);
+            MaterialAdministrador material = repository.BuscarMaterial(codigo);
             connection.Close();
             return material;
         }
@@ -72,7 +72,7 @@ namespace BLL
             try
             {
                 connection.Open();
-                Material material = repository.Buscar(codigo);
+                MaterialAdministrador material = repository.Buscar(codigo);
                 if(material!= null)
                 {
                     respuesta = new BusquedaMaterial(material);
@@ -97,15 +97,30 @@ namespace BLL
                 connection.Close();
             }
         }
+        public string ActualizarEstadoMaterial(string idMaterial, string estado)
+        {
+            try
+            {
+                connection.Open();
+                repository.ActualizarEstadoMaterial(idMaterial, estado);
+                connection.Close();
+                return "Se actualizo exitosamente";
+            }
+            catch (Exception e)
+            {
+
+                return $"Error: {e.Message}";
+            }
+        }
     }
 
    public class RespuestaConsultaMaterial
     {
-        public List<Material> Materiales { get; set; }
+        public List<MaterialAdministrador> Materiales { get; set; }
         public string Mensaje { get; set; }
         public bool Error { get; set; }
 
-        public RespuestaConsultaMaterial(List<Material> materiales)
+        public RespuestaConsultaMaterial(List<MaterialAdministrador> materiales)
         {
             Materiales = materiales;
             Error = false;
@@ -120,11 +135,11 @@ namespace BLL
 
     public class BusquedaMaterial
     {
-        public Material Material { get; set; }
+        public MaterialAdministrador Material { get; set; }
         public bool Error { get; set; }
         public string Mensaje { get; set; }
 
-        public BusquedaMaterial(Material material)
+        public BusquedaMaterial(MaterialAdministrador material)
         {
             Material = material;
             Error = true;

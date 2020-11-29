@@ -48,10 +48,23 @@ namespace BLL
             try
             {
                 connectionManager.Open();
-                Empleado empleado = repositoryBD.BuscarEmpleado(documento); 
-                respuesta = new BuscarEmpleado(empleado);
-                connectionManager.Close();
-                return respuesta;
+                Empleado empleado = repositoryBD.BuscarEmpleado(documento);
+                if (empleado != null)
+                {
+                    respuesta = new BuscarEmpleado(empleado);
+                    connectionManager.Close();
+                    return respuesta;
+                }
+                else
+                {
+                    respuesta = new BuscarEmpleado("No se encontro registrado ese nombre de usuario");
+                    connectionManager.Close();
+                    return respuesta;
+                    
+                }
+               
+               
+                
             }
             catch (Exception e)
             {
@@ -69,9 +82,19 @@ namespace BLL
             {
                 connectionManager.Open();
                 Empleado empleado = repositoryBD.ValidarContraseña(contraseña);
-                respuesta = new BuscarEmpleado(empleado);
-                connectionManager.Close();
-                return respuesta;
+                if(empleado != null)
+                {
+                    respuesta = new BuscarEmpleado(empleado);
+                    connectionManager.Close();
+                    return respuesta;
+                }
+                else
+                {
+                    respuesta = new BuscarEmpleado("Contraseña incorrecta");
+                    connectionManager.Close();
+                    return respuesta;
+                }
+               
             }
             catch (Exception e)
             {
@@ -82,7 +105,67 @@ namespace BLL
             finally { connectionManager.Close(); }
         }
 
+        public ListaMonitor ListaNombresMonitor()
+        {
+            ListaMonitor monitor;
+            try
+            {
+                connectionManager.Open();
+                monitor = new ListaMonitor(repositoryBD.ListaNombresMonitor());
+                connectionManager.Close();
+                return monitor;
+            }
+            catch (Exception e)
+            {
 
+                monitor = new ListaMonitor($"Error: {e.Message}");
+                return monitor;
+            }
+        }
+
+        public string Monitor(string identificacion)
+        {
+            string iden;
+            connectionManager.Open();
+            iden = repositoryBD.NombreMonitor(identificacion);
+            connectionManager.Close();
+            return iden;
+        }
+        public ListaMonitor ListaMonitores()
+        {
+            ListaMonitor monitor;
+            
+            try
+            {
+                connectionManager.Open();
+                monitor = new ListaMonitor(repositoryBD.ListaMonitores());
+                connectionManager.Close();
+                return monitor;
+            }
+            catch (Exception e)
+            {
+
+                monitor = new ListaMonitor($"Error: {e.Message}");
+                return monitor;
+            }
+        }
+        public List<string> LlenarCmbEmpleados()
+        {
+            List<string> empleados = new List<string>();
+            try
+            {
+                connectionManager.Open();
+                empleados = repositoryBD.LlenarCmbEmpleados();
+                connectionManager.Close();
+                return empleados;
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+            finally { connectionManager.Close(); }
+        }
         public Empleado ValidarCredenciales(string nombreUsuario)
         {
              connectionManager.Open();
@@ -92,6 +175,24 @@ namespace BLL
         }
 
 
+    }
+    public class ListaMonitor
+    {
+        public List<string> lista { get; set; }
+        public bool Error { get; set; }
+        public string Mensaje { get; set; }
+
+        public ListaMonitor(List<string> Lista)
+        {
+            lista = Lista;
+            Error = false;
+        }
+
+        public ListaMonitor(string mensaje)
+        {
+            Mensaje = mensaje;
+            Error = true;
+        }
     }
         public class BuscarEmpleado
         {

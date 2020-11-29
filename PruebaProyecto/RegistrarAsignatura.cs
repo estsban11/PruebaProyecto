@@ -53,7 +53,7 @@ namespace PruebaProyecto
             asignatura.CodigoMateria = textBox1.Text;
             asignatura.NombreMateria = textBox2.Text;
             asignatura.NumeroGrupo = textBox3.Text;
-            asignatura.HorasLaboratorio = textBox4.Text;
+            asignatura.HorasLaboratorio = comboBox1.Text;
             asignatura.Docente.Identificacion = textBox5.Text;
             MessageBox.Show(service.Guardar(asignatura), "Registro", MessageBoxButtons.OK);
         }

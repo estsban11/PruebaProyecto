@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class Material
+    public class MaterialAdministrador
     {
         public string CodigoProducto { get; set; }
         public string NombreProducto { get; set; }
         public string DescripcionProducto { get; set; }
         public int CantidadProducto { get; set; }
-        public double PrecioProducto { get; set; }
+        
       
 
 

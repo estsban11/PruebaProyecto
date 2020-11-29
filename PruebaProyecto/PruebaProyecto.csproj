@@ -87,12 +87,24 @@
     <Compile Include="ConsultarProductos.Designer.cs">
       <DependentUpon>ConsultarProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConsultarStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarStock.Designer.cs">
+      <DependentUpon>ConsultarStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExtraerCadena.cs" />
     <Compile Include="FormularioInsumos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormularioInsumos.Designer.cs">
       <DependentUpon>FormularioInsumos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InicioMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InicioMonitor.Designer.cs">
+      <DependentUpon>InicioMonitor.cs</DependentUpon>
     </Compile>
     <Compile Include="RegistrarAsignatura.cs">
       <SubType>Form</SubType>
@@ -151,6 +163,12 @@
     <Compile Include="RegistrarProductos.Designer.cs">
       <DependentUpon>RegistrarProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="ResponderSolicitudes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResponderSolicitudes.Designer.cs">
+      <DependentUpon>ResponderSolicitudes.cs</DependentUpon>
+    </Compile>
     <Compile Include="SolicitudesDocentes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,8 +184,14 @@
     <EmbeddedResource Include="ConsultarProductos.resx">
       <DependentUpon>ConsultarProductos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarStock.resx">
+      <DependentUpon>ConsultarStock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormularioInsumos.resx">
       <DependentUpon>FormularioInsumos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InicioMonitor.resx">
+      <DependentUpon>InicioMonitor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarAsignatura.resx">
       <DependentUpon>RegistrarAsignatura.cs</DependentUpon>
@@ -204,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarProductos.resx">
       <DependentUpon>RegistrarProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResponderSolicitudes.resx">
+      <DependentUpon>ResponderSolicitudes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SolicitudesDocentes.resx">
       <DependentUpon>SolicitudesDocentes.cs</DependentUpon>

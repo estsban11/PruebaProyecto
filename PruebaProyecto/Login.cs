@@ -24,11 +24,13 @@ namespace PruebaProyecto
         DialogResult resultBlanco;
         DocenteService service = new DocenteService();
         EmpeladoServiceBD serviceBD;
+        DocenteserviceBD docenteserviceBD;
        
         public Login()
         {
             InitializeComponent();
             serviceBD = new EmpeladoServiceBD(ExtraerCadena.connectionString);
+            docenteserviceBD = new DocenteserviceBD(ExtraerCadena.connectionString);
             
         }
         
@@ -40,7 +42,7 @@ namespace PruebaProyecto
             if(textBox1.Text == "")
             {
                 vacio = false;
-                errorProvider1.SetError(textBox1, "Ingesa nombre de usuario");
+                errorProvider1.SetError(textBox1, "Ingresa nombre de usuario");
             }
             if(textBox2.Text == "")
             {
@@ -54,64 +56,103 @@ namespace PruebaProyecto
         private void button1_Click(object sender, EventArgs e)
         {
             
-            if (validarCampos() == false)
+            if (validarCampos())
             {
-                ValidarCargo();
-                this.Hide();
+                if (textBox1.Text[0] == 'D')
+                {
+                    validarDocente(textBox1.Text, textBox2.Text);
+                }
+                else
+                {
+                    ValidarCredenciales(textBox1.Text, textBox2.Text);
+                }
             }
             
         }
-    private void ValidarCredenciales(string nombreUsuario)
+
+        public void PasarTextoDocente(PrincipalDocente docente)
         {
-            var busqueda = serviceBD.ValidarNombreUsuario(nombreUsuario);
-           
-            if (busqueda.Encontrado == false)
+         
+        }
+       public void validarDocente(string nombreUsuario, string Contraseña)
+        {
+            var NombreUsuario = docenteserviceBD.ValidarNombreUsuario(nombreUsuario);
+            var contraseña = docenteserviceBD.ValidarContraseña(Contraseña);
+            if (NombreUsuario.Encontrado == true)
             {
-              
-                PrincipalAdministrador admin = new PrincipalAdministrador();
-                admin.Show();
+                if (contraseña.Encontrado == true)
+                {
+                    var Usuario = contraseña.Docente;
+                    PrincipalDocente principal = new PrincipalDocente();
+                    principal.label3.Text = Usuario.Identificacion;
+                    principal.textBox1.Text = Usuario.Identificacion;
+                    principal.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Contraseña incorrecta", "Contraseña", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show(NombreUsuario.Mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+            
+       private void ValidarCredenciales(string nombreUsuario, string Contraseña)
+        {
+            var contraseña = serviceBD.ValidarContraseña(Contraseña);
+            var busqueda = serviceBD.ValidarNombreUsuario(nombreUsuario);
+
+            if (busqueda.Encontrado == true)
+            {
+                
+                if (contraseña.Encontrado == true)
+                {
+                    var Usuario = busqueda.Empleado;
+                    ValidarCargo(Usuario);
+                }
+                else
+                {
+                    MessageBox.Show("Contraseña incorrecta", "Contraseña", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
             else
             {
                 MessageBox.Show("Nombre de usuario invalido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-        }
-        public void Buscar(string nombreUsuario)
-        {
-           var busqueda =  service.Busqueda(nombreUsuario);
-            if (busqueda.Encontrado==true)
-            {
-                ValidarCargo();
-                
-            }
-            else
-            {
-                MessageBox.Show(busqueda.Mensaje);
-            }
-
-
-        }
-        private void ValidarCargo()
-        {
             
+            
+            }
+
+        private static void PasarUsuario(BuscarEmpleado busqueda)
+        {
+            var Usuario = busqueda.Empleado;
+            PrincipalAdministrador admin = new PrincipalAdministrador();
+            admin.label3.Text = $"{Usuario.PrimerNombre} {Usuario.PrimerApellido}";
+        }
+
+        public void Nombre(Empleado empleado)
+        {
+            PrincipalAdministrador principalAdministrador = new PrincipalAdministrador();
+            principalAdministrador.label3.Text = $"{empleado.PrimerNombre} {empleado.PrimerApellido}";
+        }
+       
+        private void ValidarCargo(Empleado empleado)
+        {
+
             if (textBox1.Text[0] == 'A')
             {
                 PrincipalAdministrador principal = new PrincipalAdministrador();
-               
+                principal.label3.Text = empleado.PrimerNombre;
                 principal.Show();
-                
-            }
-            else if (textBox1.Text[0] == 'D')
-            {
-                PrincipalDocente docente = new PrincipalDocente();
-                docente.Show();
-              
 
             }
             else if (textBox1.Text[0] == 'M')
             {
                 PrincipalMonitor monitor = new PrincipalMonitor();
+                
                 monitor.Show();
             }
             

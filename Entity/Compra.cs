@@ -6,37 +6,37 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class Pago
+    public class Compra
     {
-        public Pedido Pedido { get; set; }
         public double SubTotal { get; set; }
         public double IVA { get; set; }
         public double Total { get; set; }
-        public Pago()
+        public Compra()
         {
-            SubTotal = 0;
-            IVA = 0;
-            Total = 0;
+             SubTotal = 0;
+             IVA = 0;
+             Total = 0;
+
         }
-        private void CalcularSubtotal()
+        private void CalcularSubtotal(List<MaterialMonitor> lista)
         {
-            foreach (Material material in Pedido.Materiales)
+            foreach (MaterialMonitor material in lista)
             {
                 SubTotal = SubTotal + (material.PrecioProducto * material.CantidadProducto);
             }
 
         }
-        private void CalcularIVA()
+        private void CalcularIVA(List<MaterialMonitor> lista)
         {
-            foreach (Material material in Pedido.Materiales)
+            foreach (MaterialMonitor material in lista)
             {
                 IVA = IVA + (material.PrecioProducto * material.CantidadProducto * 0.16);
             }
         }
-        public void CalcularPagoTotal()
+        public void CalcularPagoTotal(List<MaterialMonitor> lista)
         {
-            CalcularSubtotal();
-            CalcularIVA();
+            CalcularSubtotal(lista);
+            CalcularIVA(lista);
             Total = SubTotal + IVA;
         }
 

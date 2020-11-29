@@ -171,6 +171,7 @@
             this.iconButton3.Text = "Consultar stock";
             this.iconButton3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.iconButton3.UseVisualStyleBackColor = true;
+            this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click);
             // 
             // iconButton2
             // 
@@ -192,6 +193,7 @@
             this.iconButton2.Text = "Solicitudes docentes";
             this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.iconButton2.UseVisualStyleBackColor = true;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
             // 
             // iconButton1
             // 
@@ -218,9 +220,9 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
-            this.panel3.Location = new System.Drawing.Point(267, 145);
+            this.panel3.Location = new System.Drawing.Point(266, 145);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1158, 572);
+            this.panel3.Size = new System.Drawing.Size(1159, 572);
             this.panel3.TabIndex = 25;
             // 
             // panel4
@@ -309,7 +311,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button10;
@@ -323,5 +324,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.Panel panel3;
     }
 }

@@ -16,22 +16,35 @@ namespace PruebaProyecto
     public partial class FormularioDocente : Form
     {
         DocenteserviceBD serviceBD;
-        
+        FormularioServiceBD FormularioServiceBD;
+        List<DetalleFormulario> detalles = new List<DetalleFormulario>();
+        EmpeladoServiceBD service;
+        AsignaturaServiceBD asignaturaServiceBD;
+       
+
+
         public FormularioDocente()
         {
            
             InitializeComponent();
             serviceBD = new DocenteserviceBD(ExtraerCadena.connectionString);
-            LlenarTabla();
-            LlenarComboMonitor();
-           
-            
+            FormularioServiceBD = new FormularioServiceBD(ExtraerCadena.connectionString);
+            service = new EmpeladoServiceBD(ExtraerCadena.connectionString);
+            asignaturaServiceBD = new AsignaturaServiceBD(ExtraerCadena.connectionString);
+            ExtraerTexto(); 
+            LlenarCombo();
+          
         }
 
-        public void LlenarTabla()
+       
+
+        public void LlenarCombo()
         {
-            dataGridView1.Rows.Insert(0,"Mortero","delgado",2);
-            dataGridView1.Rows.Insert(1, "Alcohol", "por litro", 2);
+            var lista = service.ListaMonitores().lista;
+            foreach (var item in lista)
+            {
+                cmbDocentes.Items.Add(item);
+            }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -41,10 +54,11 @@ namespace PruebaProyecto
             
         }
 
-        public void Buscar()
+        public void ExtraerTexto()
         {
-            
 
+            PrincipalDocente doc = new PrincipalDocente();
+            txtCodigo.Text = doc.textBox1.Text;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -53,23 +67,40 @@ namespace PruebaProyecto
             
         }
 
-        public void LlenarComboMonitor()
+        public void RegistrarInformacionPedido()
         {
-            cmbDocentes.Items.Clear();
-            SqlConnection connection = new SqlConnection(ExtraerCadena.connectionString);
-            connection.Open();
-            SqlCommand command = new SqlCommand("select * from empleado where id_cargo = 002", connection);
-            SqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                cmbDocentes.Items.Add(reader[0].ToString());
-            }
-            connection.Close();
+            Formulario formulario = new Formulario();
+            formulario.Docente.Identificacion = txtCodigo.Text;
+            formulario.empleado.Cedula = cmbDocentes.Text;
+            formulario.FechaPedido = dtpFechaPedido.Value;
+            formulario.FechaLimite = dtpFechaEntrega.Value;
+            formulario.NombreAsignatura = cmbAsignatura.Text;
+            formulario.GrupoAsignatura = cmbGrupo.Text;
+            formulario.HoraAsignatura = textBox1.Text;
+            formulario.Docente.primerNombre = txtNombreDocente.Text;
+            formulario.empleado.PrimerNombre = textBox5.Text;
+          
         }
 
-        public void LlenarComboAsignatura(string docente)
+        public void RegistrarMaterialesPedido()
         {
-            cmbAsignatura.Items.Clear();
+           
+        }
+
+
+        public void llenarComboGrupos(string nombre)
+        {
+            var lista = asignaturaServiceBD.ListaGruposAsignatura(nombre).Lista;
+            foreach (var item in lista)
+            {
+                cmbGrupo.Items.Add(item);
+            }
+        }
+
+
+        public void LlenarComboGrupo(string docente)
+        {
+            cmbGrupo.Items.Clear();
             SqlConnection connection = new SqlConnection(ExtraerCadena.connectionString);
             connection.Open();
             SqlCommand command = new SqlCommand($"select * from asignatura where id_docente = @docente ", connection);
@@ -77,31 +108,35 @@ namespace PruebaProyecto
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                cmbAsignatura.Items.Add(reader[1].ToString());
+               cmbGrupo.Items.Add(reader[2].ToString());
+               
             }
             connection.Close();
         }
 
+        public void LlenarComboAsignatura(string docente)
+        {
+            var lista = asignaturaServiceBD.ListaAsignaturas(docente).Lista;
+            foreach (var item in lista)
+            {
+                cmbAsignatura.Items.Add(item);
+            }
+        }
+
         public void ExtraerIdMonitor()
         {
-            SqlConnection connection = new SqlConnection(ExtraerCadena.connectionString);
-            connection.Open();
-            SqlCommand command = new SqlCommand($"select * from empleado where identificacion = @identificacion   ", connection);
-            command.Parameters.Add(@"identificacion", SqlDbType.VarChar).Value = cmbDocentes.Text;
-            SqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
+            var lista = service.ListaNombresMonitor().lista;
+            foreach (var item in lista)
             {
-                textBox5.Text = $"{reader[1]} {reader[3]}";
+                
             }
-           
-            connection.Close();
 
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             if(txtCodigo.Text == "")
             {
-
+                cmbAsignatura.Items.Clear();
             }
             else
             {
@@ -118,7 +153,7 @@ namespace PruebaProyecto
             }
             else
             {
-                ExtraerIdMonitor();
+                textBox5.Text = service.Monitor(cmbDocentes.Text);
             }
         }
 
@@ -130,7 +165,82 @@ namespace PruebaProyecto
 
         private void btFinalizar_Click(object sender, EventArgs e)
         {
-          
+            Formulario formulario = new Formulario();
+            formulario.IdFormulario = textBox2.Text;
+            formulario.Docente.Identificacion = txtCodigo.Text;
+            formulario.empleado.Cedula = cmbDocentes.Text;
+            formulario.FechaPedido = dtpFechaPedido.Value;
+            formulario.FechaLimite = dtpFechaEntrega.Value;
+            formulario.NombreAsignatura = cmbAsignatura.Text;
+            formulario.GrupoAsignatura = cmbGrupo.Text;
+            formulario.HoraAsignatura = textBox1.Text;
+            formulario.Docente.primerNombre = txtNombreDocente.Text;
+            formulario.empleado.PrimerNombre = textBox5.Text;
+            formulario.detalleFormulario = LLenarLista();
+            MessageBox.Show(FormularioServiceBD.GuardarPedido(formulario), "guardar", MessageBoxButtons.OK);
+            
+        }
+
+
+        public List<DetalleFormulario> LLenarLista()
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                DetalleFormulario detalle = new DetalleFormulario();
+                detalle.NombreMaterial = Convert.ToString(  row.Cells["NombreProducto"].Value);
+                detalle.Descripcion = Convert.ToString( row.Cells["Descripcion"].Value);
+                detalle.Cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+                detalle.idFormulario = textBox2.Text;
+                detalles.Add(detalle);
+            }
+            return detalles;
+        }
+        public List<DetalleFormulario> Pedidos(Formulario formulario)
+        {
+            foreach (var item in detalles)
+            {
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                item.NombreMaterial = row.Cells["NombreProducto"].Value.ToString();
+                item.Descripcion = row.Cells["Descripcion"].Value.ToString();
+                item.Cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+                item.idFormulario = textBox2.Text;
+                 detalles.Add(item);
+                }
+            }
+            return detalles;
+        }
+        
+
+        private void Agregar_Click(object sender, EventArgs e)
+        {
+            int n = dataGridView1.Rows.Add();
+            dataGridView1.Rows[n].Cells[0].Value = txtNombreProducto.Text;
+            dataGridView1.Rows[n].Cells[1].Value = txtDescripcion.Text;
+            dataGridView1.Rows[n].Cells[2].Value = txtCantidad.Text;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            
+            
+        }
+
+        private void cmbAsignatura_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void cmbAsignatura_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbAsignatura.Text == "")
+            {
+                cmbGrupo.Items.Clear();
+            }
+            else
+            {
+                LlenarComboGrupo(cmbAsignatura.Text);
+            }
         }
     }
 }

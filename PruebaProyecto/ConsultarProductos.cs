@@ -42,16 +42,15 @@ namespace PruebaProyecto
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
+            BuscarMaterial();
         }
 
         private void BuscarMaterial()
         {
-            List<Material> materiales = new List<Material>();
-            Material material = service.Buscar(textBox1.Text);
+            List<MaterialAdministrador> materiales = new List<MaterialAdministrador>();
+            MaterialAdministrador material = service.Buscar(textBox1.Text);
             materiales.Add(material);
             dataGridView1.DataSource = materiales;
-
             if (textBox1.Text == "")
                 dataGridView1.DataSource = service.Consulta().Materiales;
         }

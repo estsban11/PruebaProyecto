@@ -48,7 +48,7 @@ namespace PruebaProyecto
             this.button8 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button11 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -238,6 +238,7 @@ namespace PruebaProyecto
             this.label1.Size = new System.Drawing.Size(128, 44);
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // iconButton8
             // 
@@ -304,36 +305,34 @@ namespace PruebaProyecto
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
-            this.panel3.Location = new System.Drawing.Point(290, 150);
+            this.panel3.Location = new System.Drawing.Point(280, 150);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1107, 567);
+            this.panel3.Size = new System.Drawing.Size(1138, 579);
             this.panel3.TabIndex = 24;
             // 
             // panel4
             // 
             this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.panel4.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panel4.Controls.Add(this.button11);
+            this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.button10);
             this.panel4.Controls.Add(this.button9);
-            this.panel4.Location = new System.Drawing.Point(1268, 132);
+            this.panel4.Location = new System.Drawing.Point(1264, 132);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(157, 155);
+            this.panel4.Size = new System.Drawing.Size(161, 155);
             this.panel4.TabIndex = 25;
             // 
-            // button11
+            // label3
             // 
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.ForeColor = System.Drawing.SystemColors.Control;
-            this.button11.Location = new System.Drawing.Point(4, 64);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(150, 30);
-            this.button11.TabIndex = 3;
-            this.button11.Text = "Login";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(3, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "label3";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button10
             // 
@@ -355,7 +354,7 @@ namespace PruebaProyecto
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button9.Location = new System.Drawing.Point(4, 28);
+            this.button9.Location = new System.Drawing.Point(4, 64);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(150, 30);
             this.button9.TabIndex = 1;
@@ -387,6 +386,7 @@ namespace PruebaProyecto
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -399,7 +399,6 @@ namespace PruebaProyecto
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button11;
         private IconButton iconButton1;
         private IconButton iconButton2;
         private IconButton iconButton3;
@@ -412,5 +411,6 @@ namespace PruebaProyecto
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label2;
         private IconButton iconButton9;
+        public System.Windows.Forms.Label label3;
     }
 }

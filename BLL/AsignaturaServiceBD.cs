@@ -38,5 +38,60 @@ namespace BLL
                 connection.Close();
             }
         }
+
+        public ListaAsignaturas ListaAsignaturas(string docente)
+        {
+            ListaAsignaturas lista;
+            try
+            {
+                connection.Open();
+                lista = new ListaAsignaturas(repository.ListaAsignaturas(docente));
+                connection.Close();
+                return lista;
+            }
+            catch (Exception e)
+            {
+                lista = new ListaAsignaturas($"Error: {e.Message}");
+                return lista;
+
+            }
+            finally { connection.Close(); }
+        }
+        public ListaAsignaturas ListaGruposAsignatura(string nombre)
+        {
+            ListaAsignaturas lista;
+            try
+            {
+                connection.Open();
+                lista = new ListaAsignaturas(repository.ListaGrupos(nombre));
+                connection.Close();
+                return lista;
+            }
+            catch (Exception e)
+            {
+                lista = new ListaAsignaturas($"Error: {e.Message}");
+                return lista;
+
+            }
+            finally { connection.Close(); }
+        }
+    }
+
+    public class ListaAsignaturas{
+        public List<string> Lista { get; set; }
+        public bool Error { get; set; }
+        public string Mensaje { get; set; }
+
+        public ListaAsignaturas(List<string> lista)
+        {
+            Lista = lista;
+            Error = false;
+        }
+        public ListaAsignaturas(string mensaje)
+        {
+            Mensaje = mensaje;
+            Error = true;
+                
+        }
     }
 }

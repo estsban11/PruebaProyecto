@@ -20,7 +20,7 @@ namespace PruebaProyecto
         {
             InitializeComponent();
             service = new DocenteserviceBD(ExtraerCadena.connectionString);
-            btRegistrarAsignatura.Visible = false;
+            
         }
 
         private void btRegistrarAsignatura_Click(object sender, EventArgs e)
@@ -42,13 +42,33 @@ namespace PruebaProyecto
             docente.nombreDeUsuario = txtNombreUsuario.Text;
             docente.contraseña = txtContraseña.Text;
             MessageBox.Show(service.Guardar(docente), "Registro", MessageBoxButtons.OK);
-            btRegistrarAsignatura.Visible = true;
+           
         }
 
         public void PasarTexto(RegistrarAsignatura registrar)
         {
             registrar.textBox5.Text = txtIdentificacion.Text;
         }
-       
+        private void ExtraerTexto()
+        {
+            PrincipalDocente doc = new PrincipalDocente();
+            
+        }
+        private void txtNombreUsuario_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtIdentificacion_TextChanged(object sender, EventArgs e)
+        {
+            if(txtIdentificacion.Text == "")
+            {
+                txtNombreUsuario.Text = "";
+            }
+            else
+            {
+                txtNombreUsuario.Text = $"DC{txtIdentificacion.Text}";
+            }
+        }
     }
 }

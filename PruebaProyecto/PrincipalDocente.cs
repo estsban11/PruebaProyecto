@@ -12,7 +12,7 @@ using Entity;
 
 namespace PruebaProyecto
 {
-    public partial class PrincipalDocente : Form, Interface1
+    public partial class PrincipalDocente : Form
     {
 
         public string texto;
@@ -23,14 +23,18 @@ namespace PruebaProyecto
             InitializeComponent();
             this.Opacity = 0.91;
             OcultarSubmenu();
+            LLenarTxtCodigo();
             
         }
 
-       
+       public void PasarTexto(object form)
+        {
+           
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CopiarTexto(new FormularioDocente());
+
             AbrirForm(new FormularioDocente());
         }
 
@@ -117,9 +121,7 @@ namespace PruebaProyecto
         {
 
         }
-        public void CopiarTexto(FormularioDocente docente)
-        {
-        }
+       
 
 
         private void PrincipalDocente_Load(object sender, EventArgs e)
@@ -142,7 +144,11 @@ namespace PruebaProyecto
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            AbrirForm(new FormularioDocente());
+            FormularioDocente fdoc = new FormularioDocente();
+            fdoc.txtCodigo.Text = textBox1.Text;
+            AbrirForm(fdoc);
+            
+
         }
 
         private void iconButton5_Click(object sender, EventArgs e)
@@ -174,6 +180,21 @@ namespace PruebaProyecto
         private void iconButton9_Click(object sender, EventArgs e)
         {
             panel3.Controls.Clear();
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        public void LLenarTxtCodigo()
+        {
+         
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

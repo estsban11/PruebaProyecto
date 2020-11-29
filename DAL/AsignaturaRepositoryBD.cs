@@ -31,6 +31,43 @@ namespace DAL
                 command.ExecuteNonQuery();
             }
         }
+
+        public List<string> ListaAsignaturas(string docente)
+        {
+            List<string> lista = new List<string>();
+            SqlDataReader sqlDataReader;
+            using (var command = connection._connection.CreateCommand())
+            {
+                command.CommandText = $"select * from asignatura where id_docente = {docente}";
+                sqlDataReader = command.ExecuteReader();
+                while (sqlDataReader.Read())
+                {
+                    lista.Add(sqlDataReader[1].ToString());
+                }
+                sqlDataReader.Close();
+            }
+            return lista;
+        }
+
+        public List<string> ListaGrupos(string nombre)
+        {
+            List<string> lista = new List<string>();
+            SqlDataReader sqlDataReader;
+            using (var command = connection._connection.CreateCommand())
+            {
+                command.CommandText = $"select * from asignatura where Nombre_materia = {nombre}";
+                sqlDataReader = command.ExecuteReader();
+                while (sqlDataReader.Read())
+                {
+                    lista.Add(sqlDataReader[2].ToString());
+                }
+                sqlDataReader.Close();
+            }
+            return lista;
+        }
+
+
+        }
         
     }
-}
+

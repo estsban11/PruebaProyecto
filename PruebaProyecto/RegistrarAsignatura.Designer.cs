@@ -34,7 +34,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -42,6 +41,7 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,15 +96,8 @@
             // 
             this.textBox3.Location = new System.Drawing.Point(205, 212);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(106, 22);
+            this.textBox3.Size = new System.Drawing.Size(136, 22);
             this.textBox3.TabIndex = 14;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(205, 260);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
-            this.textBox4.TabIndex = 15;
             // 
             // label3
             // 
@@ -150,7 +143,6 @@
             // 
             this.textBox5.Location = new System.Drawing.Point(205, 77);
             this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(191, 22);
             this.textBox5.TabIndex = 21;
             // 
@@ -180,18 +172,35 @@
             this.iconButton1.UseVisualStyleBackColor = true;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "6:00 - 8:00 AM",
+            "8:00 - 10:00 AM",
+            "10:00 - 12:00 PM",
+            "12:00 - 2:00 PM",
+            "2:00 - 4:00 PM",
+            "4:00 - 6:00 PM",
+            "6:00 - 8:00 PM",
+            "8:00 - 10:00 PM"});
+            this.comboBox1.Location = new System.Drawing.Point(205, 261);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(136, 24);
+            this.comboBox1.TabIndex = 23;
+            // 
             // RegistrarAsignatura
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(558, 545);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
@@ -217,7 +226,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -225,5 +233,6 @@
         public System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Panel panel1;
         private FontAwesome.Sharp.IconButton iconButton1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

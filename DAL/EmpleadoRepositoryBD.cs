@@ -79,6 +79,51 @@ namespace DAL
             }
             return empleados;
         }
+
+        public List<string> ListaMonitores()
+        {
+            List<string> lista = new List<string>();
+            SqlDataReader sqlDataReader;
+            using(var command = connectionManager._connection.CreateCommand())
+            {
+                command.CommandText = "select * from Empleado where id_cargo = 002";
+                sqlDataReader = command.ExecuteReader();
+                while (sqlDataReader.Read())
+                {
+                    lista.Add(sqlDataReader[0].ToString());
+                }
+                sqlDataReader.Close();
+            }
+            return lista;
+        }
+
+        public List<string> ListaNombresMonitor()
+        {
+            List<string> lista = new List<string>();
+            SqlDataReader sqlDataReader;
+            using (var command = connectionManager._connection.CreateCommand())
+            {
+                command.CommandText = "select * from Empleado where id_cargo = 002";
+                sqlDataReader = command.ExecuteReader();
+                while (sqlDataReader.Read())
+                {
+                    lista.Add($"{sqlDataReader[1]} {sqlDataReader[3]}");
+                }
+                sqlDataReader.Close();
+            }
+            return lista;
+        }
+
+        public string NombreMonitor(string identificacion)
+        {
+            List<Empleado> lista = Consulta();
+            string union, primerNombre, primerApellido;
+            primerNombre= lista.Where(l => l.Cedula == identificacion).Select(l => l.PrimerNombre).FirstOrDefault();
+            primerApellido = lista.Where(l => l.Cedula == identificacion).Select(l => l.PrimerApellido).FirstOrDefault();
+            union = $"{primerNombre} {primerApellido}";
+            return union;
+        }
+        
         public Empleado Mapear(SqlDataReader dataReader)
         {
             Empleado empleado = new Empleado();
@@ -131,6 +176,13 @@ namespace DAL
         {
             List<Empleado> empleados = Consulta();
             return empleados.Where(e => e.NombreUsuario == nombreUsuario).FirstOrDefault();
+        }
+
+        public List<string> LlenarCmbEmpleados()
+        {
+            IList<Empleado> empleados = Consulta();
+           return  empleados.Where(e => e.Cargo.IdCargo == "002").Select(e=>e.Cedula).ToList();
+           
         }
     }
 }

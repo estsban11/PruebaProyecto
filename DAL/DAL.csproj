@@ -52,6 +52,7 @@
     <Compile Include="EmpleadoRepositoryBD.cs" />
     <Compile Include="FormularioRepositoryBD.cs" />
     <Compile Include="MaterialRepositoryBD.cs" />
+    <Compile Include="PedidoMonitorRepositoryBD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
