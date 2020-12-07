@@ -24,16 +24,16 @@ namespace DAL
             {
                 command.CommandText = "Guardar";
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.Add("Identificacion", System.Data.SqlDbType.VarChar).Value = empleado.Cedula;
-                command.Parameters.Add("P_nombre", System.Data.SqlDbType.VarChar).Value = empleado.PrimerNombre;
-                command.Parameters.Add("S_nombre", System.Data.SqlDbType.VarChar).Value = empleado.SegundoNombre;
-                command.Parameters.Add("P_apellido", System.Data.SqlDbType.VarChar).Value = empleado.PrimerApellido;
-                command.Parameters.Add("S_apellido", System.Data.SqlDbType.VarChar).Value = empleado.SegundoApellido;
-                command.Parameters.Add("Id_cargo", System.Data.SqlDbType.VarChar).Value = empleado.Cargo.IdCargo;
-                command.Parameters.Add("N_cargo", System.Data.SqlDbType.VarChar).Value = empleado.Cargo.NombreCargo;
-                command.Parameters.Add("Email", System.Data.SqlDbType.VarChar).Value = empleado.Email;
-                command.Parameters.Add("Nombre_usuario", System.Data.SqlDbType.VarChar).Value = empleado.NombreUsuario;
-                command.Parameters.Add("Contraseña", System.Data.SqlDbType.VarChar).Value = empleado.Contraseña;
+                command.Parameters.AddWithValue("Identificacion", empleado.Cedula);
+                command.Parameters.AddWithValue("P_nombre",  empleado.PrimerNombre);
+                command.Parameters.AddWithValue("S_nombre",  empleado.SegundoNombre);
+                command.Parameters.AddWithValue("P_apellido", empleado.PrimerApellido);
+                command.Parameters.AddWithValue("S_apellido", empleado.SegundoApellido);
+                command.Parameters.AddWithValue("Id_cargo",  empleado.Cargo.IdCargo);
+                command.Parameters.AddWithValue("N_cargo",  empleado.Cargo.NombreCargo);
+                command.Parameters.AddWithValue("Email",  empleado.Email);
+                command.Parameters.AddWithValue("Nombre_usuario", empleado.NombreUsuario);
+                command.Parameters.AddWithValue("Contraseña",  empleado.Contraseña);
                 command.ExecuteNonQuery();
             }
         }

@@ -24,9 +24,9 @@ namespace DAL
             {
                 command.CommandText = "Registrar_materiales";
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.Add("n_material", System.Data.SqlDbType.VarChar).Value = material.NombreProducto;
-                command.Parameters.Add("d_material", System.Data.SqlDbType.VarChar).Value = material.DescripcionProducto;
-                command.Parameters.Add("can_material", System.Data.SqlDbType.Int).Value = material.CantidadProducto;
+                command.Parameters.AddWithValue("n_material",  material.NombreProducto);
+                command.Parameters.AddWithValue("d_material",  material.DescripcionProducto);
+                command.Parameters.AddWithValue("can_material",  material.CantidadProducto);
                 command.ExecuteNonQuery();
             }
         }
@@ -85,15 +85,41 @@ namespace DAL
             {
                 command.CommandText = "Actualizar_solicitud_material";
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.Add(@"id_material", System.Data.SqlDbType.VarChar).Value = idPedido;
-                command.Parameters.Add(@"estado_material", System.Data.SqlDbType.VarChar).Value = estado;
+                command.Parameters.AddWithValue(@"id_material",idPedido);
+                command.Parameters.AddWithValue(@"estado_material",  estado);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void Actualizar(string idProducto, string nombreProducto, string descripcionProducto, int cantidadProducto)
+        {
+            using(var command = connection._connection.CreateCommand())
+            {
+                command.CommandText = "Actualizar_productos_admin";
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue(@"id_producto",  idProducto);
+                command.Parameters.AddWithValue(@"nombre",  nombreProducto);
+                command.Parameters.AddWithValue(@"descripcion",  descripcionProducto);
+                command.Parameters.AddWithValue(@"cantidad",  cantidadProducto);
                 command.ExecuteNonQuery();
             }
         }
         public MaterialAdministrador BuscarMaterial(string codigo)
         {
             List<MaterialAdministrador> materiales = Consultar();
-            return materiales.Where(m=>m.CodigoProducto == codigo || m.NombreProducto.Contains(codigo)).FirstOrDefault();
+            return materiales.Where(m=>m.CodigoProducto == codigo || m.NombreProducto.Equals(codigo,StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+        }
+
+        public List<MaterialAdministrador> FiltrarMayorStock()
+        {
+            List<MaterialAdministrador> materiales = Consultar();
+            return materiales.Where(m => m.CantidadProducto >= 15).ToList();
+        }
+
+        public List<MaterialAdministrador> FiltrarMenorStock()
+        {
+            List<MaterialAdministrador> materiales = Consultar();
+            return materiales.Where(m => m.CantidadProducto >= 15).ToList();
         }
     }
 }

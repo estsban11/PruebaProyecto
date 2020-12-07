@@ -75,6 +75,12 @@
       <DependentUpon>ActualizarProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="CambiarColor.cs" />
+    <Compile Include="ConsultarFormularioDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarFormularioDocente.Designer.cs">
+      <DependentUpon>ConsultarFormularioDocente.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConsultarLaboratorios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrarAsignaturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarAsignaturaForm.Designer.cs">
+      <DependentUpon>RegistrarAsignaturaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarDocente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +189,9 @@
     </Compile>
     <EmbeddedResource Include="ActualizarProductos.resx">
       <DependentUpon>ActualizarProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarFormularioDocente.resx">
+      <DependentUpon>ConsultarFormularioDocente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultarLaboratorios.resx">
       <DependentUpon>ConsultarLaboratorios.cs</DependentUpon>
@@ -220,6 +235,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RegistrarAsignaturaForm.resx">
+      <DependentUpon>RegistrarAsignaturaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RegistrarDocente.resx">
       <DependentUpon>RegistrarDocente.cs</DependentUpon>
     </EmbeddedResource>

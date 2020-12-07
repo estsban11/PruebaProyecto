@@ -57,6 +57,21 @@ namespace BLL
             finally { connection.Close(); }
         }
 
+        public string Actualizar(string idProducto, string nombreProducto, string descripcionProducto, int cantidadProducto)
+        {
+            try
+            {
+                connection.Open();
+                repository.Actualizar(idProducto, nombreProducto, descripcionProducto, cantidadProducto);
+                connection.Close();
+                return "Se actualizo correctamente";
+            }
+            catch (Exception e)
+            {
+
+                return $"Error: {e.Message}";
+            }
+        }
         public MaterialAdministrador Buscar(string codigo)
         {
             connection.Open();
@@ -111,6 +126,23 @@ namespace BLL
 
                 return $"Error: {e.Message}";
             }
+        }
+
+        public List<MaterialAdministrador> FiltrarMayorStock()
+        {
+            List<MaterialAdministrador> materiales;
+            connection.Open();
+            materiales = repository.FiltrarMayorStock();
+            connection.Close();
+            return materiales;
+        }
+        public List<MaterialAdministrador> FiltrarMenorStock()
+        {
+            List<MaterialAdministrador> materiales;
+            connection.Open();
+            materiales = repository.FiltrarMenorStock();
+            connection.Close();
+            return materiales;
         }
     }
 

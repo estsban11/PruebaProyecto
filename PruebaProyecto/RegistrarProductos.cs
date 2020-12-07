@@ -16,6 +16,7 @@ namespace PruebaProyecto
     public partial class RegistrarProductos : Form
     {
         MaterialServiceBD service;
+        List<MaterialAdministrador> materiales = new List<MaterialAdministrador>();
         public RegistrarProductos()
         {
             InitializeComponent();
@@ -56,9 +57,16 @@ namespace PruebaProyecto
 
         public void ConsultarMateriales()
         {
-
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = service.Consulta().Materiales;
+            dataGridView1.Rows.Clear();
+            materiales = service.Consulta().Materiales;
+            foreach (var item in materiales)
+            {
+                int n = dataGridView1.Rows.Add();
+                dataGridView1.Rows[n].Cells[0].Value = item.CodigoProducto;
+                dataGridView1.Rows[n].Cells[1].Value = item.NombreProducto;
+                dataGridView1.Rows[n].Cells[2].Value = item.DescripcionProducto;
+                dataGridView1.Rows[n].Cells[3].Value = item.CantidadProducto;
+            }
 
         }
 

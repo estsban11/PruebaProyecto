@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtIdentificacion = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,6 +47,7 @@
             this.txtNombreUsuario = new System.Windows.Forms.TextBox();
             this.btRegistrar = new System.Windows.Forms.Button();
             this.btRegistrarAsignatura = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -274,5 +276,6 @@
         private System.Windows.Forms.TextBox txtNombreUsuario;
         private System.Windows.Forms.Button btRegistrar;
         private System.Windows.Forms.Button btRegistrarAsignatura;
+        private System.Windows.Forms.Timer timer1;
     }
 }

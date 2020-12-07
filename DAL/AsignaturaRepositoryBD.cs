@@ -23,11 +23,11 @@ namespace DAL
             {
                 command.CommandText = "Registrar_asignatura";
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.Add("c_asignatura", System.Data.SqlDbType.VarChar).Value = asignatura.CodigoMateria;
-                command.Parameters.Add("n_asignatura", System.Data.SqlDbType.VarChar).Value = asignatura.NombreMateria;
-                command.Parameters.Add("n_grupo", System.Data.SqlDbType.VarChar).Value = asignatura.NumeroGrupo;
-                command.Parameters.Add("h_laboratorio", System.Data.SqlDbType.VarChar).Value = asignatura.HorasLaboratorio;
-                command.Parameters.Add("id_docente", System.Data.SqlDbType.VarChar).Value = asignatura.Docente.Identificacion;
+                command.Parameters.AddWithValue("c_asignatura", asignatura.CodigoMateria);
+                command.Parameters.AddWithValue("n_asignatura", asignatura.NombreMateria);
+                command.Parameters.AddWithValue("n_grupo", asignatura.NumeroGrupo);
+                command.Parameters.AddWithValue("h_laboratorio", asignatura.HorasLaboratorio);
+                command.Parameters.AddWithValue("id_docente", asignatura.Docente.Identificacion);
                 command.ExecuteNonQuery();
             }
         }

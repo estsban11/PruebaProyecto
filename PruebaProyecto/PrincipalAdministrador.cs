@@ -206,5 +206,10 @@ namespace PruebaProyecto
         {
 
         }
+
+        private void iconButton10_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new RegistrarAsignaturaForm());
+        }
     }
 }

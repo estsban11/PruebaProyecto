@@ -31,9 +31,10 @@ namespace PruebaProyecto
             FormularioServiceBD = new FormularioServiceBD(ExtraerCadena.connectionString);
             service = new EmpeladoServiceBD(ExtraerCadena.connectionString);
             asignaturaServiceBD = new AsignaturaServiceBD(ExtraerCadena.connectionString);
-            ExtraerTexto(); 
+            ExtraerTexto();
             LlenarCombo();
-          
+           
+            
         }
 
        
@@ -59,6 +60,8 @@ namespace PruebaProyecto
 
             PrincipalDocente doc = new PrincipalDocente();
             txtCodigo.Text = doc.textBox1.Text;
+           
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -95,6 +98,7 @@ namespace PruebaProyecto
             {
                 cmbGrupo.Items.Add(item);
             }
+            
         }
 
 
@@ -110,6 +114,20 @@ namespace PruebaProyecto
             {
                cmbGrupo.Items.Add(reader[2].ToString());
                
+            }
+            connection.Close();
+        }
+
+        public void LlenarTexbox(string identificacion)
+        {
+            SqlConnection connection = new SqlConnection(ExtraerCadena.connectionString);
+            connection.Open();
+            SqlCommand command = new SqlCommand($"select * from docente where identificacion = @docente ", connection);
+            command.Parameters.AddWithValue(@"docente", identificacion);
+            SqlDataReader sqlDataReader = command.ExecuteReader();
+            while (sqlDataReader.Read())
+            {
+                txtNombreDocente.Text = $"{sqlDataReader[1]} {sqlDataReader[3]}";
             }
             connection.Close();
         }
@@ -141,6 +159,7 @@ namespace PruebaProyecto
             else
             {
                 LlenarComboAsignatura(txtCodigo.Text);
+                LlenarTexbox(txtCodigo.Text);
             }
             
         }
@@ -211,6 +230,21 @@ namespace PruebaProyecto
             return detalles;
         }
         
+        public void DatosDocente(string identificacion)
+        {
+            var busqueda = serviceBD.BuscarDocente(identificacion).Encontrado;
+            if (busqueda == true)
+            {
+                Docente docente = new Docente();
+                docente = serviceBD.BuscarDocente(identificacion).Docente;
+                txtNombreDocente.Text = $"{docente.primerNombre} {docente.primerApellido}";
+            }
+            else
+            {
+                MessageBox.Show(serviceBD.BuscarDocente(txtCodigo.Text).Mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
 
         private void Agregar_Click(object sender, EventArgs e)
         {
@@ -241,6 +275,11 @@ namespace PruebaProyecto
             {
                 LlenarComboGrupo(cmbAsignatura.Text);
             }
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Entity;
 using DAL;
 using System.Data.SqlClient;
+using Infraestructura;
 
 namespace BLL
 {
@@ -22,12 +23,15 @@ namespace BLL
 
         public string Guardar(Docente docente)
         {
+            Email envioEmail = new Email();
+            string mensajeEmail = string.Empty;
             try
             {
                 connection.Open();
                 repository.Guardar(docente);
+                envioEmail.EnviarEmailDocente(docente);
                 connection.Close();
-                return "Se registro correctamente";
+                return "Se registro correctamente"+ mensajeEmail;
 
             }
             catch (Exception e)
@@ -98,6 +102,34 @@ namespace BLL
                 return respuesta;
             }
             finally { connection.Close(); }
+        }
+
+        public BuscarDocente BuscarDocente(string identificacion)
+        {
+            BuscarDocente respuesta;
+            try
+            {
+                connection.Open();
+                Docente docente = repository.BuscarDocenteIdentificacion(identificacion);
+                if (docente != null)
+                {
+                    respuesta = new BuscarDocente(docente);
+                    connection.Close();
+                    return respuesta;
+                }
+                else
+                {
+                    respuesta = new BuscarDocente("no se encontro docente");
+                    connection.Close();
+                    return respuesta;
+                }
+
+            }
+            catch (Exception e)
+            {
+                respuesta = new BuscarDocente($"Error: {e.Message}");
+                return respuesta;
+            }
         }
     }
 

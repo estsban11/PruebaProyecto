@@ -25,13 +25,13 @@ namespace DAL
                 command.Transaction = sqlTransaction;
                 command.CommandText = "Registrar_pedido_monitor";
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.Add(@"id_pedido", System.Data.SqlDbType.VarChar).Value = pedido.IdPedido;
-                command.Parameters.Add(@"fecha", System.Data.SqlDbType.DateTime).Value = pedido.Fecha;
-                command.Parameters.Add(@"Descripcion", System.Data.SqlDbType.VarChar).Value = pedido.Descripcion;
-                command.Parameters.Add(@"ubicacion", System.Data.SqlDbType.VarChar).Value = pedido.Ubicacion;
-                command.Parameters.Add(@"subtotal", System.Data.SqlDbType.Float).Value = pedido.Compra.SubTotal;
-                command.Parameters.Add(@"iva", System.Data.SqlDbType.Float).Value = pedido.Compra.IVA;
-                command.Parameters.Add(@"total", System.Data.SqlDbType.Float).Value = pedido.Compra.Total;
+                command.Parameters.AddWithValue(@"id_pedido", pedido.IdPedido);
+                command.Parameters.AddWithValue(@"fecha", pedido.Fecha);
+                command.Parameters.AddWithValue(@"Descripcion", pedido.Descripcion);
+                command.Parameters.AddWithValue(@"ubicacion",  pedido.Ubicacion);
+                command.Parameters.AddWithValue(@"subtotal",  pedido.Compra.SubTotal);
+                command.Parameters.AddWithValue(@"iva", pedido.Compra.IVA);
+                command.Parameters.AddWithValue(@"total", pedido.Compra.Total);
                 command.ExecuteNonQuery();
             }
         }
@@ -45,11 +45,11 @@ namespace DAL
                     command.Transaction = sqlTransaction;
                     command.CommandText = "Registrar_materiales_monitor";
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.Add(@"descripcion", System.Data.SqlDbType.VarChar).Value = item.DescripcionProducto;
-                    command.Parameters.Add(@"marca", System.Data.SqlDbType.VarChar).Value = item.MarcaProducto;
-                    command.Parameters.Add(@"cantidad", System.Data.SqlDbType.Int).Value = item.CantidadProducto;
-                    command.Parameters.Add(@"precio", System.Data.SqlDbType.Float).Value = item.PrecioProducto;
-                    command.Parameters.Add(@"id_pedido", System.Data.SqlDbType.VarChar).Value = item.IdPedido;
+                    command.Parameters.AddWithValue(@"descripcion",  item.DescripcionProducto);
+                    command.Parameters.AddWithValue(@"marca", item.MarcaProducto);
+                    command.Parameters.AddWithValue(@"cantidad",  item.CantidadProducto);
+                    command.Parameters.AddWithValue(@"precio", item.PrecioProducto);
+                    command.Parameters.AddWithValue(@"id_pedido", item.IdPedido);
                     command.ExecuteNonQuery();
                 }
             }

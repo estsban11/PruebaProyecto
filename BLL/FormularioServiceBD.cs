@@ -97,10 +97,64 @@ namespace BLL
             catch (Exception e)
             {
 
-                throw;
+                respuesta = new FormularioRespuesta($"Error: {e.Message}");
+                return respuesta;
             }
         }
- 
+        public FormulariosPendientes FormulariosPendientes()
+        {
+            FormulariosPendientes respuesta;
+            try
+            {
+                connection.Open();
+                respuesta = new FormulariosPendientes(repository.ListaFormulariosPendientes());
+                connection.Close();
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+
+                respuesta = new FormulariosPendientes($"Error: {e.Message}");
+                connection.Close();
+                return respuesta;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+        public ListaFormularios BuscarFormularioRechazado()
+        {
+            ListaFormularios respuesta;
+            try
+            {
+                connection.Open();
+                respuesta = new ListaFormularios(repository.BuscarformularioRechazado());
+                connection.Close();
+                return respuesta;
+
+            }
+            catch (Exception e)
+            {
+                respuesta = new ListaFormularios($"Error: {e.Message}");
+                return respuesta;
+            }
+        }
+        public string ActulizarEstadoFormualrio(string idFormualrio, string estadoPedido)
+        {
+            try
+            {
+                connection.Open();
+                repository.Actulizar(idFormualrio, estadoPedido);
+                connection.Close();
+                return $"Se actualizo con exito";
+            }
+            catch (Exception e)
+            {
+
+                return $"Error: {e.Message}";
+            }
+        }
     }
 
     public class ListaFormularios
@@ -121,7 +175,24 @@ namespace BLL
             Error = true;
         }
     }
+    public class FormulariosPendientes
+    {
+        public List<string> Lista { get; set; }
+        public string Mensaje { get; set; }
+        public bool Error { get; set; }
 
+        public FormulariosPendientes(List<string> lista)
+        {
+            Lista = lista;
+            Error = false;
+        }
+
+        public FormulariosPendientes(string mensaje)
+        {
+            Mensaje = mensaje;
+            Error = true;
+        }
+    }
     public class FormularioRespuesta
     {
         public Formulario formulario { get; set; }

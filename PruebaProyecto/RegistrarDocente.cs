@@ -20,7 +20,8 @@ namespace PruebaProyecto
         {
             InitializeComponent();
             service = new DocenteserviceBD(ExtraerCadena.connectionString);
-            
+           
+
         }
 
         private void btRegistrarAsignatura_Click(object sender, EventArgs e)
@@ -42,7 +43,7 @@ namespace PruebaProyecto
             docente.nombreDeUsuario = txtNombreUsuario.Text;
             docente.contraseña = txtContraseña.Text;
             MessageBox.Show(service.Guardar(docente), "Registro", MessageBoxButtons.OK);
-           
+  
         }
 
         public void PasarTexto(RegistrarAsignatura registrar)

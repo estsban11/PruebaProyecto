@@ -49,11 +49,12 @@
             // 
             this.button1.BackColor = System.Drawing.Color.MidnightBlue;
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(196, 357);
+            this.button1.Location = new System.Drawing.Point(160, 367);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 47);
+            this.button1.Size = new System.Drawing.Size(236, 58);
             this.button1.TabIndex = 0;
             this.button1.Text = "Registrar";
             this.button1.UseVisualStyleBackColor = false;

@@ -23,14 +23,14 @@ namespace DAL
             {
                 command.CommandText = "Registrar_docente";
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.Add("identificacion", System.Data.SqlDbType.VarChar).Value = docente.Identificacion;
-                command.Parameters.Add("p_nombre", System.Data.SqlDbType.VarChar).Value = docente.primerNombre;
-                command.Parameters.Add("s_nombre", System.Data.SqlDbType.VarChar).Value = docente.segundoNombre;
-                command.Parameters.Add("p_apellido", System.Data.SqlDbType.VarChar).Value = docente.primerApellido;
-                command.Parameters.Add("s_apellido", System.Data.SqlDbType.VarChar).Value = docente.segundoApellido;
-                command.Parameters.Add("email", System.Data.SqlDbType.VarChar).Value = docente.Email;
-                command.Parameters.Add("n_usuario", System.Data.SqlDbType.VarChar).Value = docente.nombreDeUsuario;
-                command.Parameters.Add("contraseña", System.Data.SqlDbType.VarChar).Value = docente.contraseña;
+                command.Parameters.AddWithValue ("identificacion",  docente.Identificacion);
+                command.Parameters.AddWithValue("p_nombre",  docente.primerNombre);
+                command.Parameters.AddWithValue("s_nombre",  docente.segundoNombre);
+                command.Parameters.AddWithValue("p_apellido",  docente.primerApellido);
+                command.Parameters.AddWithValue("s_apellido",  docente.segundoApellido);
+                command.Parameters.AddWithValue("email",  docente.Email);
+                command.Parameters.AddWithValue("n_usuario", docente.nombreDeUsuario);
+                command.Parameters.AddWithValue("contraseña",  docente.contraseña);
                 command.ExecuteNonQuery();
             }
         }
@@ -83,6 +83,18 @@ namespace DAL
             return null;
         }
 
+        public Docente BuscarDocenteIdentificacion(string nombreUsuario)
+        {
+            List<Docente> Docentes = Consultar();
+            foreach (var item in Docentes)
+            {
+                if (Encontrado(item.Identificacion, nombreUsuario))
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
         public Docente BuscarContraseña(string contraseña)
         {
             List<Docente> Docentes = Consultar();

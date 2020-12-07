@@ -54,6 +54,7 @@
     <Compile Include="MaterialRepositoryBD.cs" />
     <Compile Include="PedidoMonitorRepositoryBD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RespuestSolicitudRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entity\Entity.csproj">

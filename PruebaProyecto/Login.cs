@@ -86,6 +86,7 @@ namespace PruebaProyecto
                     PrincipalDocente principal = new PrincipalDocente();
                     principal.label3.Text = Usuario.Identificacion;
                     principal.textBox1.Text = Usuario.Identificacion;
+                    principal.textBox1.Visible = false;
                     principal.Show();
                 }
                 else
@@ -146,6 +147,7 @@ namespace PruebaProyecto
             {
                 PrincipalAdministrador principal = new PrincipalAdministrador();
                 principal.label3.Text = empleado.PrimerNombre;
+                principal.textBox1.Text = empleado.Cedula;
                 principal.Show();
 
             }

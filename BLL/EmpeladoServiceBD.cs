@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 using Entity;
+using Infraestructura;
 
 
 namespace BLL
@@ -24,12 +25,15 @@ namespace BLL
 
         public string Guardar(Empleado empleado)
         {
+            Email envioEmail = new Email();
+            string mensajeEmail = string.Empty;
             try
             {
                 connectionManager.Open();
                 repositoryBD.Guardar(empleado);
+                envioEmail.EnviarEmailEmpleado(empleado);
                 connectionManager.Close();
-                return "Se guardo exitoxamente";
+                return $"Se guardo exitoxamente"+ mensajeEmail;
             }
             catch (Exception e)
             {

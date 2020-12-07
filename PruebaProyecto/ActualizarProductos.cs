@@ -7,16 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
+using Entity;
 
 namespace PruebaProyecto
 {
     public partial class ActualizarProductos : Form
     {
+        MaterialServiceBD serviceBD;
         public int xClick { get; set; }
         public int yClick { get; set; }
         public ActualizarProductos()
         {
             InitializeComponent();
+            serviceBD = new MaterialServiceBD(ExtraerCadena.connectionString);
 
         }
 
@@ -42,6 +46,17 @@ namespace PruebaProyecto
                 this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick);
             }
 
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(serviceBD.Actualizar(textBox1.Text, textBox2.Text, textBox3.Text, Convert.ToInt32( textBox4.Text)), "Actualizar", MessageBoxButtons.OK);
         }
     }
 }

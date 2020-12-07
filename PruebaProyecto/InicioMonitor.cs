@@ -18,8 +18,7 @@ namespace PruebaProyecto
         public InicioMonitor()
         {
             InitializeComponent();
-            serviceBD = new FormularioServiceBD(ExtraerCadena.connectionString);
-            LlenarPendiente();
+            serviceBD = new FormularioServiceBD(ExtraerCadena.connectionString);            
         }
 
         public void LlenarPendiente()

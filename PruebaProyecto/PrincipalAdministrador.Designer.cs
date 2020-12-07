@@ -33,6 +33,7 @@ namespace PruebaProyecto
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrincipalAdministrador));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.iconButton10 = new FontAwesome.Sharp.IconButton();
             this.iconButton9 = new FontAwesome.Sharp.IconButton();
             this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.iconButton6 = new FontAwesome.Sharp.IconButton();
@@ -52,6 +53,7 @@ namespace PruebaProyecto
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -60,6 +62,8 @@ namespace PruebaProyecto
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.MidnightBlue;
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.iconButton10);
             this.panel1.Controls.Add(this.iconButton9);
             this.panel1.Controls.Add(this.iconButton7);
             this.panel1.Controls.Add(this.iconButton6);
@@ -70,6 +74,28 @@ namespace PruebaProyecto
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(252, 758);
             this.panel1.TabIndex = 1;
+            // 
+            // iconButton10
+            // 
+            this.iconButton10.FlatAppearance.BorderSize = 0;
+            this.iconButton10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton10.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton10.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton10.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.iconButton10.IconChar = FontAwesome.Sharp.IconChar.Book;
+            this.iconButton10.IconColor = System.Drawing.Color.White;
+            this.iconButton10.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton10.IconSize = 60;
+            this.iconButton10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton10.Location = new System.Drawing.Point(3, 545);
+            this.iconButton10.Name = "iconButton10";
+            this.iconButton10.Rotation = 0D;
+            this.iconButton10.Size = new System.Drawing.Size(249, 62);
+            this.iconButton10.TabIndex = 10;
+            this.iconButton10.Text = "Registrar asignatura";
+            this.iconButton10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.iconButton10.UseVisualStyleBackColor = true;
+            this.iconButton10.Click += new System.EventHandler(this.iconButton10_Click);
             // 
             // iconButton9
             // 
@@ -105,7 +131,7 @@ namespace PruebaProyecto
             this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton7.IconSize = 68;
             this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton7.Location = new System.Drawing.Point(3, 553);
+            this.iconButton7.Location = new System.Drawing.Point(3, 622);
             this.iconButton7.Name = "iconButton7";
             this.iconButton7.Rotation = 0D;
             this.iconButton7.Size = new System.Drawing.Size(249, 62);
@@ -366,6 +392,15 @@ namespace PruebaProyecto
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.MidnightBlue;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Location = new System.Drawing.Point(49, 150);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(144, 15);
+            this.textBox1.TabIndex = 11;
+            // 
             // PrincipalAdministrador
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -383,6 +418,7 @@ namespace PruebaProyecto
             this.Text = "Principal";
             this.Load += new System.EventHandler(this.PrincipalAdministrador_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -412,5 +448,7 @@ namespace PruebaProyecto
         private System.Windows.Forms.Label label2;
         private IconButton iconButton9;
         public System.Windows.Forms.Label label3;
+        private IconButton iconButton10;
+        public System.Windows.Forms.TextBox textBox1;
     }
 }

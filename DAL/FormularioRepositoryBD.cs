@@ -26,17 +26,17 @@ namespace DAL
                 command.Transaction = transaction;
                 command.CommandText = "RegistrarPedido";
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.Add(@"id_pedido", System.Data.SqlDbType.VarChar).Value = formulario.IdFormulario;
-                command.Parameters.Add(@"id_docente", System.Data.SqlDbType.VarChar).Value = formulario.Docente.Identificacion;
-                command.Parameters.Add(@"id_monitor", System.Data.SqlDbType.VarChar).Value = formulario.empleado.Cedula;
-                command.Parameters.Add(@"fecha_pedido", System.Data.SqlDbType.DateTime).Value = formulario.FechaPedido;
-                command.Parameters.Add(@"fecha_entrega", System.Data.SqlDbType.DateTime).Value = formulario.FechaLimite;
-                command.Parameters.Add(@"Estado_pedido", System.Data.SqlDbType.VarChar).Value = formulario.EstadoPedido;
-                command.Parameters.Add(@"nombre_asignatura", System.Data.SqlDbType.VarChar).Value = formulario.NombreAsignatura;
-                command.Parameters.Add(@"grupo_asignatura", System.Data.SqlDbType.VarChar).Value = formulario.GrupoAsignatura;
-                command.Parameters.Add(@"hora_asignatura", System.Data.SqlDbType.VarChar).Value = formulario.HoraAsignatura;
-                command.Parameters.Add(@"nombre_docente", System.Data.SqlDbType.VarChar).Value = formulario.Docente.primerNombre;
-                command.Parameters.Add(@"nombre_monitor", System.Data.SqlDbType.VarChar).Value = formulario.empleado.PrimerNombre;
+                command.Parameters.AddWithValue(@"id_pedido", formulario.IdFormulario);
+                command.Parameters.AddWithValue(@"id_docente",  formulario.Docente.Identificacion);
+                command.Parameters.AddWithValue(@"id_monitor",  formulario.empleado.Cedula);
+                command.Parameters.AddWithValue(@"fecha_pedido", formulario.FechaPedido);
+                command.Parameters.AddWithValue(@"fecha_entrega",  formulario.FechaLimite);
+                command.Parameters.AddWithValue(@"Estado_pedido", formulario.EstadoPedido);
+                command.Parameters.AddWithValue(@"nombre_asignatura",  formulario.NombreAsignatura);
+                command.Parameters.AddWithValue(@"grupo_asignatura",  formulario.GrupoAsignatura);
+                command.Parameters.AddWithValue(@"hora_asignatura", formulario.HoraAsignatura);
+                command.Parameters.AddWithValue(@"nombre_docente",  formulario.Docente.primerNombre);
+                command.Parameters.AddWithValue(@"nombre_monitor",  formulario.empleado.PrimerNombre);
                 command.ExecuteNonQuery();
             }
         }
@@ -51,11 +51,11 @@ namespace DAL
                     command.Transaction = transaction;
                     command.CommandText = "Registrar_materiales_pedido";
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.Add(@"n_material", System.Data.SqlDbType.VarChar).Value = item.NombreMaterial;
-                    command.Parameters.Add(@"descripcion", System.Data.SqlDbType.VarChar).Value = item.Descripcion;
-                    command.Parameters.Add(@"cantidad", System.Data.SqlDbType.Int).Value = item.Cantidad;
-                    command.Parameters.Add(@"estado_producto", System.Data.SqlDbType.VarChar).Value = item.Devuelto;
-                    command.Parameters.Add(@"id_pedido", System.Data.SqlDbType.VarChar).Value = item.idFormulario;
+                    command.Parameters.AddWithValue(@"n_material",  item.NombreMaterial);
+                    command.Parameters.AddWithValue(@"descripcion",  item.Descripcion);
+                    command.Parameters.AddWithValue(@"cantidad",  item.Cantidad);
+                    command.Parameters.AddWithValue(@"estado_producto",  item.Devuelto);
+                    command.Parameters.AddWithValue(@"id_pedido",  item.idFormulario);
                     command.ExecuteNonQuery();
                 }
             }
@@ -158,6 +158,18 @@ namespace DAL
             return null;
         }
 
+        public void Actulizar(string idFormualrio, string estadoPedido)
+        {
+            using(var command = connection._connection.CreateCommand())
+            {
+                command.CommandText = "Actualizar_estado_pedido";
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.Add(@"id_pedido", System.Data.SqlDbType.VarChar).Value = idFormualrio;
+                command.Parameters.Add(@"estado", System.Data.SqlDbType.VarChar).Value = estadoPedido;
+                command.ExecuteNonQuery();
+
+            }
+        }
 
         
 
@@ -166,6 +178,24 @@ namespace DAL
             return formularioBuscado == formularioEncontrado;
         }
 
+        public List<string> ListaFormulariosPendientes()
+        {
+            List<string> lista = new List<string>();
+            SqlDataReader sqlDataReader;
+            using (var command = connection._connection.CreateCommand())
+            {
+                command.CommandText = "select * from informacion_pedido where Estado_pedido = 'Pendiente'";
+                sqlDataReader = command.ExecuteReader();
+                while (sqlDataReader.Read())
+                {
+                    lista.Add(sqlDataReader[0].ToString());
+                }
+                sqlDataReader.Close();
+            }
+            return lista;
+        }
+
+        
         public Formulario BuscarformularioPendiente()
         {
             List<Formulario> formularios = ConsultarFormulario();
@@ -176,6 +206,11 @@ namespace DAL
             List<DetalleFormulario> detalleFormularios = ConsultarMateriales();
             return detalleFormularios.Where(d => d.idFormulario == noFormulario).ToList();
         }
-        
+        public List<Formulario> BuscarformularioRechazado()
+        {
+            List<Formulario> formularios = ConsultarFormulario();
+            return formularios.Where(f => f.EstadoPedido == "Rechazado").ToList();
+        }
+
     }
 }

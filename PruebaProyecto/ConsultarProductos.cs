@@ -15,6 +15,7 @@ namespace PruebaProyecto
     public partial class ConsultarProductos : Form
     {
         MaterialServiceBD service;
+        List<MaterialAdministrador> materiales = new List<MaterialAdministrador>();
         public ConsultarProductos()
         {
             InitializeComponent();
@@ -24,35 +25,54 @@ namespace PruebaProyecto
 
         public void LlenarTabla()
         {
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = service.Consulta().Materiales;
-           
+      
+            materiales = service.Consulta().Materiales;
+            foreach (var item in materiales)
+            {
+                int n = dataGridView1.Rows.Add();
+                dataGridView1.Rows[n].Cells[0].Value = item.CodigoProducto;
+                dataGridView1.Rows[n].Cells[1].Value = item.NombreProducto;
+                dataGridView1.Rows[n].Cells[2].Value = item.DescripcionProducto;
+                dataGridView1.Rows[n].Cells[3].Value = item.CantidadProducto;
+            }
 
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             ActualizarProductos actualizar = new ActualizarProductos();
-            actualizar.ShowDialog();
             actualizar.textBox1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             actualizar.textBox2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             actualizar.textBox3.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            actualizar.numericUpDown1.Value = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[3].Value);
+           actualizar.textBox4.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            actualizar.ShowDialog();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            BuscarMaterial();
+            
         }
 
         private void BuscarMaterial()
         {
-            List<MaterialAdministrador> materiales = new List<MaterialAdministrador>();
+            
             MaterialAdministrador material = service.Buscar(textBox1.Text);
             materiales.Add(material);
-            dataGridView1.DataSource = materiales;
             if (textBox1.Text == "")
-                dataGridView1.DataSource = service.Consulta().Materiales;
+            {
+                dataGridView1.Rows.Clear();
+                LlenarTabla();
+            }
+            else
+            { 
+             dataGridView1.Rows[0].Cells[0].Value = material.CodigoProducto;
+             dataGridView1.Rows[0].Cells[1].Value = material.NombreProducto;
+             dataGridView1.Rows[0].Cells[2].Value = material.DescripcionProducto;
+              dataGridView1.Rows[0].Cells[3].Value = material.CantidadProducto;
+
+            }
+
+            
         }
 
         private void comboBox1_TextUpdate(object sender, EventArgs e)
@@ -67,7 +87,7 @@ namespace PruebaProyecto
 
         private void textBox1_KeyUp(object sender, KeyEventArgs e)
         {
-            BuscarMaterial();
+           
         }
 
         private void textBox1_TextAlignChanged(object sender, EventArgs e)
@@ -77,6 +97,17 @@ namespace PruebaProyecto
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
+           
+        }
+
+        private void textBox1_TabStopChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
             BuscarMaterial();
         }
     }

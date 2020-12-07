@@ -126,7 +126,7 @@
             this.panel2.Controls.Add(this.iconButton1);
             this.panel2.Location = new System.Drawing.Point(0, -2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(243, 761);
+            this.panel2.Size = new System.Drawing.Size(243, 785);
             this.panel2.TabIndex = 1;
             // 
             // iconButton9
@@ -163,7 +163,7 @@
             this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton3.IconSize = 62;
             this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton3.Location = new System.Drawing.Point(3, 450);
+            this.iconButton3.Location = new System.Drawing.Point(3, 518);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.Rotation = 0D;
             this.iconButton3.Size = new System.Drawing.Size(235, 80);
@@ -185,7 +185,7 @@
             this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton2.IconSize = 60;
             this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(5, 347);
+            this.iconButton2.Location = new System.Drawing.Point(3, 402);
             this.iconButton2.Name = "iconButton2";
             this.iconButton2.Rotation = 0D;
             this.iconButton2.Size = new System.Drawing.Size(235, 80);
@@ -207,7 +207,7 @@
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 70;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(7, 244);
+            this.iconButton1.Location = new System.Drawing.Point(7, 293);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Rotation = 0D;
             this.iconButton1.Size = new System.Drawing.Size(233, 80);
@@ -220,9 +220,9 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
-            this.panel3.Location = new System.Drawing.Point(266, 145);
+            this.panel3.Location = new System.Drawing.Point(263, 145);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1159, 572);
+            this.panel3.Size = new System.Drawing.Size(1162, 619);
             this.panel3.TabIndex = 25;
             // 
             // panel4
@@ -232,7 +232,7 @@
             this.panel4.Controls.Add(this.button11);
             this.panel4.Controls.Add(this.button10);
             this.panel4.Controls.Add(this.button9);
-            this.panel4.Location = new System.Drawing.Point(1280, 128);
+            this.panel4.Location = new System.Drawing.Point(1280, 137);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(145, 138);
             this.panel4.TabIndex = 29;
@@ -289,7 +289,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1437, 758);
+            this.ClientSize = new System.Drawing.Size(1437, 776);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);

@@ -16,10 +16,13 @@ namespace PruebaProyecto
     {
         FormularioServiceBD serviceBD;
         List<MaterialMonitor> materiales = new List<MaterialMonitor>();
+        bool Timer;
         public SolicitudesDocentes()
         {
             InitializeComponent();
             serviceBD = new FormularioServiceBD(ExtraerCadena.connectionString);
+            llenarComboPendientes();
+            
         }
 
         private void label14_Click(object sender, EventArgs e)
@@ -27,14 +30,37 @@ namespace PruebaProyecto
 
         }
 
+        public void llenarComboPendientes()
+        {
+            var lista = serviceBD.FormulariosPendientes().Lista;
+            if (lista == null)
+            {
+
+            }
+            else
+            {
+                foreach (var item in lista)
+                {
+                    comboBox2.Items.Add(item);
+                }
+            }
+           
+        }
         private void button2_Click(object sender, EventArgs e)
         {
+
+                DatosFormulario(textBox1.Text);
+
+        }
+
+        private void DatosFormulario(string noFormulario)
+        {
             Formulario formulario = new Formulario();
-          
-            var busqueda = serviceBD.BuscarFormulario(textBox1.Text).Encontrado;
+
+            var busqueda = serviceBD.BuscarFormulario(noFormulario).Encontrado;
             if (busqueda == true)
             {
-                formulario = serviceBD.BuscarFormulario(textBox1.Text).formulario;
+                formulario = serviceBD.BuscarFormulario(noFormulario).formulario;
                 textBox2.Text = formulario.Docente.Identificacion;
                 textBox3.Text = formulario.Docente.primerNombre;
                 textBox5.Text = formulario.NombreAsignatura;
@@ -43,13 +69,12 @@ namespace PruebaProyecto
                 textBox8.Text = formulario.FechaPedido.ToString();
                 textBox9.Text = formulario.FechaLimite.ToString();
                 dataGridView1.DataSource = null;
-                dataGridView1.DataSource = serviceBD.BuscarMateriales(textBox1.Text);
+                dataGridView1.DataSource = serviceBD.BuscarMateriales(noFormulario);
             }
             else
             {
-                MessageBox.Show(serviceBD.BuscarFormulario(textBox1.Text).Mensaje, "Error", MessageBoxButtons.OK);
+                MessageBox.Show(serviceBD.BuscarFormulario(noFormulario).Mensaje, "Error", MessageBoxButtons.OK);
             }
-          
         }
 
         public void LlenarTabla(Formulario formulario)
@@ -68,7 +93,21 @@ namespace PruebaProyecto
             
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+        }
 
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DatosFormulario(comboBox2.Text);
+        }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+           
+            
+            
+        }
     }
 }
