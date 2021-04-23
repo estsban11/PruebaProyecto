@@ -76,6 +76,7 @@ namespace PruebaProyecto
             button5.Visible = true;
             button4.Visible = false;
             color.ValidarColorBlanco(resultBlanco);
+            //comentario de compañero de programador
 
         }
 
