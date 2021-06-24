@@ -15,6 +15,5 @@ namespace Entity
         public int Cantidad { get; set; }
         public string IdSolicitud { get; set; }
 
-
     }
 }

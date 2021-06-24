@@ -11,6 +11,7 @@ namespace Entity
         public double SubTotal { get; set; }
         public double IVA { get; set; }
         public double Total { get; set; }
+        
         public Compra()
         {
              SubTotal = 0;
@@ -20,6 +21,7 @@ namespace Entity
         }
         private void CalcularSubtotal(List<MaterialMonitor> lista)
         {
+           
             foreach (MaterialMonitor material in lista)
             {
                 SubTotal = SubTotal + (material.PrecioProducto * material.CantidadProducto);

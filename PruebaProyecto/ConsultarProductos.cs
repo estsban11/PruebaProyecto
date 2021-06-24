@@ -55,22 +55,28 @@ namespace PruebaProyecto
 
         private void BuscarMaterial()
         {
-            
-            MaterialAdministrador material = service.Buscar(textBox1.Text);
-            materiales.Add(material);
+
+            MaterialAdministrador material = service.BuscarMaterial(textBox1.Text).Material;
+            var busqueda = service.BuscarMaterial(textBox1.Text).Error;
+            if (busqueda == true)
+            {
+                dataGridView1.Rows[0].Cells[0].Value = material.CodigoProducto;
+                dataGridView1.Rows[0].Cells[1].Value = material.NombreProducto;
+                dataGridView1.Rows[0].Cells[2].Value = material.DescripcionProducto;
+                dataGridView1.Rows[0].Cells[3].Value = material.CantidadProducto;
+            }
+            else
+            {
+                MessageBox.Show(service.BuscarMaterial(textBox1.Text).Mensaje, "", MessageBoxButtons.OK);
+                LlenarTabla();
+            }
+
             if (textBox1.Text == "")
             {
                 dataGridView1.Rows.Clear();
                 LlenarTabla();
             }
-            else
-            { 
-             dataGridView1.Rows[0].Cells[0].Value = material.CodigoProducto;
-             dataGridView1.Rows[0].Cells[1].Value = material.NombreProducto;
-             dataGridView1.Rows[0].Cells[2].Value = material.DescripcionProducto;
-              dataGridView1.Rows[0].Cells[3].Value = material.CantidadProducto;
-
-            }
+          
 
             
         }

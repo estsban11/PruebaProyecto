@@ -87,7 +87,7 @@ namespace BLL
             try
             {
                 connection.Open();
-                MaterialAdministrador material = repository.Buscar(codigo);
+                MaterialAdministrador material = repository.BuscarMaterial(codigo);
                 if(material!= null)
                 {
                     respuesta = new BusquedaMaterial(material);
@@ -104,7 +104,8 @@ namespace BLL
             catch (Exception e)
             { 
 
-            respuesta = new BusquedaMaterial($"Error: {e.Message}");
+                respuesta = new BusquedaMaterial($"Error: {e.Message}");
+                connection.Close();
                 return respuesta;
             }
             finally
